@@ -1,13 +1,23 @@
 project:
   type: website
 
+name: "dku-stats-101"
+
 website:
-  title: "files"
-  navbar:
+  title: "DKU Stats 101 - Spring 2023"
+  navbar: 
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Course Introduction"
+        href: index.html
+      - text: "Schedule and Course Materials"
+        href: schedulematerials.html
+      - text: "Homework"
+        href: homework.html
+      - text: "R Help Manual"
+        href: rmanual.html
+    right: 
+      - icon: fa-github fa-lg
+        href: https://github.com/andrewmacd/dkustats101spring2023
 
 format:
   html:
@@ -15,5 +25,5 @@ format:
     css: styles.css
     toc: true
 
-editor: visual
+output_dir: "docs"
 
