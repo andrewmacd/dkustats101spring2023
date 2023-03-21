@@ -1,7 +1,8 @@
 project:
   type: website
-
-name: "dku-stats-101"
+  output-dir: docs
+  
+name: "dku-stats-101-sp2023"
 
 website:
   title: "DKU Stats 101 - Spring 2023"
@@ -16,7 +17,7 @@ website:
       - text: "R Help Manual"
         href: rmanual.html
     right: 
-      - icon: fa-github fa-lg
+      - icon: github
         href: https://github.com/andrewmacd/dkustats101spring2023
 
 format:
@@ -25,5 +26,5 @@ format:
     css: styles.css
     toc: true
 
-output_dir: "docs"
+
 
