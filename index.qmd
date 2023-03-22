@@ -12,8 +12,8 @@ bib <- ReadBib("data/references.bib", check="error")
 
 # Course at a glance
 
--   Tuesday/Thursday class at 2:45-5:15 pm China time
--   Wednesday lab 8:10-9:10 pm China time in
+-   Tuesday/Thursday class at 2:45-5:15 pm in IB3106
+-   Wednesday lab 8:10-9:10 pm 
 -   Office hours -
     -   Tuesday, Thursday 1:00-2:30 pm China time in CC2064
 -   Pre-class warmup quiz due at 2:30 pm before each class
