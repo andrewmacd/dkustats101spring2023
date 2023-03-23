@@ -34,7 +34,9 @@ Topics covered:
 
 -   Dealing with problem distributions (outliers, reexpression)
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 1.2](https://andrewm.shinyapps.io/spr2023distributions/)
+
+-   Lecture activity: [Lecture 1.2 activity](activites/lecture1.2.activity.zip)
 
 -   Quality YouTube content: [Tidyverse music video](https://www.youtube.com/watch?v=p8Py9C8iq2s&ab_channel=TheRaf)
 

@@ -1,5 +1,32 @@
 {
   "lectureactivities/Characteristics of Distributions Activity.qmd": {
     "Characteristics of Distributions Activity.html": "ffc4b001"
+  },
+  "lectures/lecture1.2-distributions/Characteristics of Distributions.qmd": {
+    "Characteristics of Distributions.html": "a866fb24"
+  },
+  "schedulematerials.qmd": {
+    "schedulematerials.html": "a9132522"
+  },
+  "rmanual.qmd": {
+    "rmanual.html": "e6cad6cd"
+  },
+  "index.qmd": {
+    "index.html": "a8bb09f7"
+  },
+  "lectures/lecture1.2-distributions/Characteristics of Distributions Activity.qmd": {
+    "Characteristics of Distributions Activity.html": "42aaa28c"
+  },
+  "lectures/lecture6-regressionwisdom/Regression Wisdom.Rmd": {
+    "Regression Wisdom.html": "e5c0dc29"
+  },
+  "lectures/lecture5-simpleregression/Simple Linear Regression.Rmd": {
+    "Simple Linear Regression.html": "20444048"
+  },
+  "lectures/lecture14-interpretation/Lecture 14 Activity - Article analysis.Rmd": {
+    "Lecture 14 Activity - Article analysis.html": "3902a879"
+  },
+  "lectures/lecture12-comparinggroups/Comparing Groups.Rmd": {
+    "Comparing Groups.html": "c85a14c4"
   }
 }
