@@ -16,34 +16,37 @@ Reading to do before class: Chapter 1, 2.1 and 2.2, and 3
 
 Topics covered:
 
--	What are data and variables?
--	How to display quantitative and qualitative variables
--	Contingency tables
+-   What are data and variables?
+-   How to display quantitative and qualitative variables
+-   Contingency tables
 
 ## Lecture 1.2: Characteristics of distributions (Thursday, March 23)
 
 Reading to do before class: Chapter 2.3-5 and 4
 
-> Preclass quiz due at 2:30 pm 
+> Preclass quiz due at 2:30 pm
 
 Topics covered:
 
-- How to describe the shape, center, and spread of a distribution
-- How to compare distributions
-- Dealing with problem distributions (outliers, reexpression)
+-   How to describe the shape, center, and spread of a distribution
 
-* Lecture webpage: 
-* Quality YouTube content: [Tidyverse music video](https://www.youtube.com/watch?v=p8Py9C8iq2s&ab_channel=TheRaf)
+-   How to compare distributions
 
-## Online lab 1.1 (due Sunday, March 26 at 11:59:00 pm) 
+-   Dealing with problem distributions (outliers, reexpression)
 
-* [Introduction to R](https://learn.datacamp.com/courses/free-introduction-to-r)
-* [Introduction to the Tidyverse](https://learn.datacamp.com/courses/introduction-to-the-tidyverse)
+-   Lecture webpage:
+
+-   Quality YouTube content: [Tidyverse music video](https://www.youtube.com/watch?v=p8Py9C8iq2s&ab_channel=TheRaf)
+
+## Online lab 1.1 (due Sunday, March 26 at 11:59:00 pm)
+
+-   [Introduction to R](https://learn.datacamp.com/courses/free-introduction-to-r)
+-   [Introduction to the Tidyverse](https://learn.datacamp.com/courses/introduction-to-the-tidyverse)
 
 ## Lab 1.1: R and Quarto familiarization (Monday, March 27)
 
-* Lab files: 
-  + Make sure to extract (unzip) the lab files before attempting to modify them!
+-   Lab files:
+    -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, March 28)
 
@@ -53,20 +56,22 @@ Reading to do before class: Chapter 5
 
 Topics covered:
 
-- Standard deviation and standardizing values
-- Normal models
-- Normal percentiles
+-   Standard deviation and standardizing values
 
-* Lecture webpage:
+-   Normal models
+
+-   Normal percentiles
+
+-   Lecture webpage:
 
 ## Lab 1.2: Exploratory data analysis (Wednesday, March 29)
 
-* Lab files: 
-  + Make sure to extract (unzip) the lab files before attempting to modify them!
+-   Lab files:
+    -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Unit 1 homework (due April 2nd at 11:59:00 pm)
 
-* Homework files: 
+-   Homework files:
 
 # Unit 2: Relationships between variables
 
@@ -74,19 +79,21 @@ Topics covered:
 
 Reading to do before class: Chapter 6
 
-> Preclass quiz due at 2:30 pm 
+> Preclass quiz due at 2:30 pm
 
 Topics covered:
 
-- Scatterplots
-- Correlations
-- Does correlation imply causation?
+-   Scatterplots
 
-* Lecture webpage: 
+-   Correlations
+
+-   Does correlation imply causation?
+
+-   Lecture webpage:
 
 ## Online lab 2.1 (due on Friday, March 31 at 11:59:00)
 
-* [Introduction to Data Visualization with ggplot2](https://learn.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2) 
+-   [Introduction to Data Visualization with ggplot2](https://learn.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
 
 ## Lecture 2.2: Simple Linear Regression (Tuesday, April 4)
 
@@ -96,19 +103,22 @@ Reading to do before class: Chapter 7
 
 Topics covered:
 
-- Line of best fit: least squares
-- The linear model
-- What are residuals
-- Regression assumptions
+-   Line of best fit: least squares
 
-* Lecture webpage: 
+-   The linear model
 
-## Lab 2.1: Regression interpretation (Wednesday, April 5)
+-   What are residuals
 
-* Lab files: 
-  + Make sure to extract (unzip) the lab files before attempting to modify them!
+-   Regression assumptions
 
-## Lecture 2.3: Regression Wisdom (Thursday, April 6)
+-   Lecture webpage:
+
+## Lab 2.1: Regression interpretation (Thursday, April 6)
+
+-   Lab files:
+    -   Make sure to extract (unzip) the lab files before attempting to modify them!
+
+## Lecture 2.3: Regression Wisdom (Friday, April 7)
 
 Reading to do before class: Chapter 8
 
@@ -116,16 +126,19 @@ Reading to do before class: Chapter 8
 
 Topics covered:
 
-- Beware extrapolation
-- Outliers and leverage
-- Lurking variables
-- Straightening scatterplots
+-   Beware extrapolation
 
-* Lecture webpage: 
+-   Outliers and leverage
+
+-   Lurking variables
+
+-   Straightening scatterplots
+
+-   Lecture webpage:
 
 ## Unit 2 homework - midterm project - progress check (due Sunday, April 9 at 11:59:00)
 
-* Homework files: 
+-   Homework files:
 
 ## Lecture 2.4: Multiple Regression (Tuesday, April 11)
 
@@ -135,20 +148,23 @@ Reading to do before class: Chapter 9
 
 Topics covered:
 
-- What is multiple regression?
-- Interpreting multiple regression coefficients
-- Partial regression plots
-- Indicator variables
+-   What is multiple regression?
 
-* Lecture webpage: 
+-   Interpreting multiple regression coefficients
+
+-   Partial regression plots
+
+-   Indicator variables
+
+-   Lecture webpage:
 
 ## Lab 2.2: Model building (Wednesday, April 12)
 
-* Lab files: 
+-   Lab files:
 
 ## Unit 2 homework - midterm project (due Sunday, April 16 at 11:59:00)
 
-* Homework files: 
+-   Homework files:
 
 # Unit 3: Measuring uncertainty
 
@@ -160,12 +176,15 @@ Reading to do before class: Chapter 13
 
 Topics covered:
 
-- What is a sampling distribution?
-- When does the normal model apply?
-- Constructing a confidence interval
-- Interpreting a confidence interval
+-   What is a sampling distribution?
 
-* Lecture webpage: 
+-   When does the normal model apply?
+
+-   Constructing a confidence interval
+
+-   Interpreting a confidence interval
+
+-   Lecture webpage:
 
 ## Lecture 3.2: Confidence intervals - means (Tuesday, April 18)
 
@@ -175,16 +194,19 @@ Reading to do before class: Chapter 14
 
 Topics covered:
 
-- The Central Limit Theorem
-- Confidence interval for means
-- Interpreting a confidence interval
-- Final thoughts on confidence intervals
+-   The Central Limit Theorem
 
-* Lecture webpage: 
+-   Confidence interval for means
+
+-   Interpreting a confidence interval
+
+-   Final thoughts on confidence intervals
+
+-   Lecture webpage:
 
 ## Lab 3.1: Sampling distribution (Wednesday, April 19)
 
-* Lab files:
+-   Lab files:
 
 ### Lecture 3.3: Hypothesis testing (Thursday, April 20)
 
@@ -194,27 +216,29 @@ Reading to do before class: Chapter 15
 
 Topics covered:
 
-- What are hypotheses?
-- $p$ values
-- $p$ values and decisions – how to make a decision
+-   What are hypotheses?
 
-* Lecture webpage: 
+-   $p$ values
+
+-   $p$ values and decisions -- how to make a decision
+
+-   Lecture webpage:
 
 ## Unit 3 homework - progress check (due Sunday, April 23 at 11:59:00)
 
-* Homework files: 
+-   Homework files:
 
 ## Lecture 3.4: Hypothesis testing wisdom (Tuesday, April 25)
 
-* Lecture webpage: 
+-   Lecture webpage:
 
 ## Lab 3.2: Hypothesis testing (Wednesday, April 26)
 
-* Lab files:
+-   Lab files:
 
 ## Unit 3 homework (due Sunday, April 30 at 11:59:00)
 
-* Homework files: 
+-   Homework files:
 
 # Unit 4: Statistical inference
 
@@ -226,14 +250,17 @@ Reading to do before class: Chapter 17
 
 Topics covered:
 
-- Confidence intervals for comparing two samples
-- Assumptions and conditions for two-sample hypothesis tests
-- Two-sample $z$ test
-- Two-sample $t$ test
+-   Confidence intervals for comparing two samples
 
-* Lecture webpage: 
+-   Assumptions and conditions for two-sample hypothesis tests
 
-## Lecture 4.2: Returning to regression (Tuesday, May 2)
+-   Two-sample $z$ test
+
+-   Two-sample $t$ test
+
+-   Lecture webpage:
+
+## Lecture 4.2: Returning to regression (Tuesday, May 9)
 
 Reading to do before class: Chapter 20
 
@@ -241,29 +268,34 @@ Reading to do before class: Chapter 20
 
 Topics covered:
 
-- Regression inference and intuition
-- The regression table
-- Confidence and prediction intervals
+-   Regression inference and intuition
 
-* Lecture webpage: 
+-   The regression table
 
-## Lab 4.1: Model building part 2 (Wednesday, May 3rd)
+-   Confidence and prediction intervals
 
-* Lab files:
+-   Lecture webpage:
 
-## Lecture 4.3: Interpretation activity (Thursday, May 4)
+## Lab 4.1: Model building part 2 (Wednesday, May 10)
 
-- How to read academic statistical results
-- Locating the model
-- Interpreting the test
-- Determining possible weaknesses of the model
+-   Lab files:
 
-* Lecture activity: 
+## Lecture 4.3: Interpretation activity (Thursday, May 11)
 
-## Unit 4 homework - paper analysis (due Sunday, May 7 at 11:59:00 pm)
+-   How to read academic statistical results
 
-* Homework files: 
+-   Locating the model
 
-## Final project (due Thursday, May 11 at 11:59:00 pm)
+-   Interpreting the test
 
-* Homework files: 
+-   Determining possible weaknesses of the model
+
+-   Lecture activity:
+
+## Unit 4 homework - paper analysis (due Sunday, May 14 at 11:59:00 pm)
+
+-   Homework files:
+
+## Final project (due Thursday, May 18 at 11:59:00 pm)
+
+-   Homework files:
