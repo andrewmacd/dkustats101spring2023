@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Professor MacDonald">
+<meta name="dcterms.date" content="2023-03-23">
+
+<title>files - Characteristics of Distributions Activity</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">files</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="dropdown-header">
+ <span class="menu-text">about.qmd</span></li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lecture-1.2-in-class-activities" id="toc-lecture-1.2-in-class-activities" class="nav-link active" data-scroll-target="#lecture-1.2-in-class-activities">Lecture 1.2 in-class activities</a>
+  <ul class="collapse">
+  <li><a href="#how-to-make-high-quality-histograms" id="toc-how-to-make-high-quality-histograms" class="nav-link" data-scroll-target="#how-to-make-high-quality-histograms">How to Make High-Quality Histograms</a>
+  <ul class="collapse">
+  <li><a href="#part-1-setup" id="toc-part-1-setup" class="nav-link" data-scroll-target="#part-1-setup">Part 1: Setup</a></li>
+  <li><a href="#part-2-basic-histograms" id="toc-part-2-basic-histograms" class="nav-link" data-scroll-target="#part-2-basic-histograms">Part 2: Basic Histograms</a></li>
+  <li><a href="#part-3-adding-layers-to-the-histogram" id="toc-part-3-adding-layers-to-the-histogram" class="nav-link" data-scroll-target="#part-3-adding-layers-to-the-histogram">Part 3: Adding layers to the histogram</a></li>
+  <li><a href="#part-4-dividing-the-histogram-by-a-categorical-variable" id="toc-part-4-dividing-the-histogram-by-a-categorical-variable" class="nav-link" data-scroll-target="#part-4-dividing-the-histogram-by-a-categorical-variable">Part 4: Dividing the histogram by a categorical variable</a></li>
+  </ul></li>
+  <li><a href="#thinking-about-distributions-of-variables-in-this-dataset" id="toc-thinking-about-distributions-of-variables-in-this-dataset" class="nav-link" data-scroll-target="#thinking-about-distributions-of-variables-in-this-dataset">Thinking about distributions of variables in this dataset</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Characteristics of Distributions Activity</h1>
+<p class="subtitle lead">DKU Stats 101 Spring 2023</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Professor MacDonald </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 23, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="lecture-1.2-in-class-activities" class="level1">
+<h1>Lecture 1.2 in-class activities</h1>
+<section id="how-to-make-high-quality-histograms" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-make-high-quality-histograms">How to Make High-Quality Histograms</h2>
+<blockquote class="blockquote">
+<p>Taken from: http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization Additional resources: https://ggplot2.tidyverse.org/reference/geom_histogram.html</p>
+</blockquote>
+<section id="part-1-setup" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-setup">Part 1: Setup</h3>
+<p>First, we need to install a good-quality graphical display library:</p>
+<ol type="1">
+<li><p>If you have not installed the <code>ggplot2</code> package, you can do so by typing <code>install.packages("ggplot2")</code>. Answer <code>yes</code> when prompted.</p></li>
+<li><p>Type <code>library(ggplot2)</code> into the Console after the installation has finished - this loads the package into memory</p></li>
+</ol>
+</section>
+<section id="part-2-basic-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-basic-histograms">Part 2: Basic Histograms</h3>
+<p><code>ggplot</code> is the basic graphing function that you will use over and over again.</p>
+<p>We can create a basic histogram of the miles per gallon (a measure of fuel efficiency in automobiles) with:</p>
+<p><code>ggplot(mtcars, aes(x=mpg)) + geom_histogram()</code></p>
+<p>The <code>ggplot</code> function has three components:</p>
+<ol type="1">
+<li>Dataset being used (in this case, the built-in test dataset for R called <code>mtcars</code>)</li>
+<li>The data you intend to display (named inside of the <code>aes()</code> part)</li>
+<li>The type of graphical display you wish to make (appended after the <code>ggplot()</code> function with a <code>+</code> sign)</li>
+</ol>
+<p>However, the default <code>ggplot</code> settings often are not so great. In particular, the bindwidth for this histogram is not that well chosen.</p>
+<p>To alter the binwidth, we can set each bin to equal a set number of mpg (miles per gallon):</p>
+<p><code>ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=1)</code></p>
+<blockquote class="blockquote">
+<p>Play around with the binwidth, try to find something that you feel accurately captures the distribution of the data.</p>
+</blockquote>
+<ol type="1">
+<li>What is the shape, center, and spread of this data? Are there any outliers?</li>
+<li>How does changing the binwidth affect your answers to these questions?</li>
+</ol>
+<p>To properly label the graph, we add the following amendments:</p>
+<p><code>ggplot(mtcars, aes(x=mpg)) + geom_histogram() + labs(x"MPG", y="Count", title="MPG of the cars in this dataset")</code></p>
+<p>You can see here that additional layers on top of the graph are created with each <code>+</code> sign. So the first part of the <code>ggplot()</code> function specifies the data to be used and the additional <code>+</code> each create a layer on top of the graph.</p>
+</section>
+<section id="part-3-adding-layers-to-the-histogram" class="level3">
+<h3 class="anchored" data-anchor-id="part-3-adding-layers-to-the-histogram">Part 3: Adding layers to the histogram</h3>
+<p>Now maybe we want to add a mean line. We can do so with the following command:</p>
+<p><code>p &lt;- ggplot(mtcars, aes(x=mpg)) +  geom_histogram() + labs(x="MPG", y="Count", title="MPG of the cars in this dataset")</code></p>
+<p>In this case, we are saving the output of the graph to a new variable, called <code>p</code></p>
+<p>Now we can add a vertical line at the mean of <code>mpg</code> with the following command:</p>
+<p><code>p + geom_vline(aes(xintercept=mean(mpg)), color="red", linetype="dashed", size=1)</code></p>
+<p>Or we can change the histogram type to be a density plot instead of a count plot:</p>
+<p><code>p &lt;- ggplot(mtcars, aes(x=mpg)) + geom_histogram(aes(y = ..density..)) + labs(x="MPG", y="Density", title="MPG of the cars in this dataset")</code></p>
+<p>Note that this overwrites the previous value of <code>p</code></p>
+<blockquote class="blockquote">
+<p>Think about the difference between a density plot and the previous plots we have produced</p>
+</blockquote>
+<p>You can then overlay a density layer to get another view of the distribution of the data:</p>
+<p><code>p + geom_density(alpha=.2, fill="#FF6666")</code></p>
+</section>
+<section id="part-4-dividing-the-histogram-by-a-categorical-variable" class="level3">
+<h3 class="anchored" data-anchor-id="part-4-dividing-the-histogram-by-a-categorical-variable">Part 4: Dividing the histogram by a categorical variable</h3>
+<p>We can also differentiate <code>mpg</code> by a categorical variable (number of cylinders in a car) via the following steps:</p>
+<ol type="1">
+<li>First, we need to let R know that <code>cyl</code> is a categorical variable</li>
+</ol>
+<p><code>mtcars$cyl &lt;- factor(mtcars$cyl)</code></p>
+<p>R generally does not know if a variable is a categorical one or not unless you tell it directly. <code>factor()</code> is the method of converting a quantitative variable to a categorical variable.</p>
+<ol start="2" type="1">
+<li>Then we can create histograms that vary by cylinder:</li>
+</ol>
+<p><code>ggplot(mtcars, aes(x=mpg, color=cyl))  +  geom_histogram(fill="white") + labs(x="MPG", y="Count", title="MPG of cars in the MPG Dataset")</code></p>
+<p>Here the <code>color</code> aspect of <code>aes()</code> indicates that the color should be changed according to each group of the variable <code>cylinder</code></p>
+<blockquote class="blockquote">
+<p>Play around with the binwidth and add a density layer. How would you interpret this new information?</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Next we want to create group means for each cylinder (i.e.&nbsp;what is the mean weight of each category of cylinders). To do so, we need the following commands (don’t worry about understanding it, we’ll learn more about this later):</li>
+</ol>
+<pre><code>library(plyr)
+mu &lt;- ddply(mtcars, "cyl", summarise, grp.mean=mean(mpg))
+head(mu)</code></pre>
+<p>You should get the following output:</p>
+<pre><code>  cyl grp.mean
+1   4 26.66364
+2   6 19.74286
+3   8 15.10000</code></pre>
+<p>Now we can add a mean line to each of the categories:</p>
+<p><code>ggplot(mtcars, aes(x=mpg, color=cyl))  + geom_histogram(fill="white") + labs(x="MPG", y="Count", title="MPG of cars in the MPG Dataset") + geom_vline(data=mu, aes(xintercept=grp.mean, color=cyl), linetype="dashed")</code></p>
+</section>
+</section>
+<section id="thinking-about-distributions-of-variables-in-this-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="thinking-about-distributions-of-variables-in-this-dataset">Thinking about distributions of variables in this dataset</h2>
+<p>To learn more about each of the variables in the dataset, you can examine the dataset (and any function documentation in R) by entering <code>?mtcars</code></p>
+<p>For the variables <code>hp</code> and <code>wt</code>, estimate or guess the shape, center and spread of the variables before examining your data. You can think about the following characteristics while you consider the issue:</p>
+<ul>
+<li>Shape
+<ul>
+<li>Skew</li>
+<li>Modes</li>
+</ul></li>
+<li>Center
+<ul>
+<li>Mean</li>
+<li>Median</li>
+</ul></li>
+<li>Spread
+<ul>
+<li>Range</li>
+<li>IQR</li>
+<li>Standard deviation</li>
+</ul></li>
+</ul>
+<p>Next, create some histograms to assess whether you are correct or not.</p>
+<p>Also think about:</p>
+<ol type="1">
+<li>Do you think either of these variables meaningfully vary in their distribution by one of the categorical variables? Why or why not?</li>
+<li>Do you see any outliers? Would either of these variables benefit from reexpressions?</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
