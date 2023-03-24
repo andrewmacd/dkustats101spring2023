@@ -1,0 +1,123 @@
+---
+title: "Homework 1 Instructions"
+author: "Anonymous"
+date: "3/20/2023"
+output:
+  html_document:
+    toc: true
+subtitle: DKU Stats 101 Spring 2023 Session 4
+---
+
+
+```{r setup, include=FALSE}
+# Put any setup code here
+```
+
+![](diamonds.jpg)
+
+# Assignment Background
+
+Imagine that you are an analyst at a consulting firm hired by a jewelry store company, this jewelry store is interested in how to improve the profitability of its diamond sales. Your boss asks you to write a report that identifies the key features of diamonds that best determine their price. She also sends you this dataset of recent diamond sales in their stores. Use this dataset to answer the questions below.  ^[Credit to user HROKR for making this data publicly available at https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle]    
+
+# Assignment Instructions
+
+- Please leave the name as Anonymous; the homeworks are blind graded so please do not include your name.
+- Save this document as a new document (Save As...) and rename it `Homework 1 Answers.qmd`. 
+- You can import the dataset by inserting the code `load(file="diamondsales.Rdata")` into your setup block. Make sure the data file is in the same folder as your homework file.  
+- If I say "Interpret..." or "Explain..." that means I want at least 1-2 good quality sentences that show that you really understand the output of what R has produced. Short, incomplete sentences that fail to demonstrate you understand your output will have points deducted.
+- While the homework isn't a formal document, it should be written as if you are a business analyst presenting this information to a boss - i.e. everything should look neat and tidy, have good labels (graphs have appropriate titles and axes labels, etc.), and be well organized
+- If you want a chance to earn extra credit, select your best graph or table (only one per student) and post it to the `Graph Contest` Teams channel. I will select a few finalists and the class will vote on the best data display. Winner receives significant extra credit.
+- Delete the Assignment Background and Assignment Instructions sections of this document before submitting.
+
+## Part 1: One variable analysis
+
+### Q1: What kind of dataset do we have? (5 points)
+
+- According to the definitions in the textbook, describe the Five W's for this dataset. 
+
+- Using the definitions in the textbook, describe the variable type for the following variables (you can review the variable definitions [here](https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle)):
+
+  * `id`
+  * `total_sales_price` 
+  * `carat_weight`      
+  * `cut`   
+  * `color` 
+  * `clarity` 
+  * `cut_quality`  
+  * `symmetry`    
+  * `polish` 
+  * `meas_length` 
+  * `meas_width` 
+  * `meas_depth`
+  * `depth_percent`
+
+### Q2: Literature review (5 points)
+
+Find a news article online that discusses what are the major features that determine what people are looking for in diamonds. Paste the article link here in your homework and write a brief one to two sentence summary of the article. 
+
+Based on these articles and your own personal expectations, some ways we might expect the data to be distributed or variables related? Make a bulleted list of at least **three** things we should expect or look for in the data and write a reason why we should expect it (no need to cite academic papers, just write down your reasons).
+
+### Q3: Describing the data (10 points)
+
+The first step in analyzing any dataset is doing some exploratory analysis of the variables.
+
+- Make a histogram of `total_sales_price`. 
+  + Describe it using the three features of quantitative data.
+  + Does the histogram of `total_sales_price` surprise you? Why or why not?
+  + Which is a better measure of center of the histogram, mean or median?
+  + Make a nice table displaying the 5 number summary. You can make a nice table using either [kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) or with the [visual editing mode](https://quarto.org/docs/visual-editor/content.html#editing-tables) of Quarto. Calculate the five number summary by using the `min()` , `quantile()`, `median()`, and `max()` functions to do this. Show your code.
+  + Calculate the standard deviation using the `sd()` function. Interpret it - is it large or small?
+  + Would this histogram benefit from a transformation, in your opinion? Why or why not? If it would, please transform it appropriately and describe the transformation.
+- Make a bar chart comparing the mean of `total_sales_price` according to the variable `cut_quality`. Interpret this graph.
+  + Hint: R imports datasets by default keeping text as text (`strings` in R world). Remember the DataCamp method to convert the `strings` into `factors`.
+  
+### Q4: Comparing categorical variables (10 points)
+
+- One interesting piece of information the jewlery store would like to know is if there is any relationship between the clarity and the cut quality. In particular, they wonder if cut quality might differ between diamonds of higher clarity. The best way to examine this relationship is with a contingency table. 
+  + Hint: documentation on how to produce contingency tables can be found [here](http://analyticswithr.com/contingencytables.html) and also using the `taybl()` function from the package `janitor` - instructions [here](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html). 
+- Add margins to your table. Does it change your interpretation?
+- Convert your table into a proportions table. Does this better help explain what the data show? What are the advantages and disadvantages of each table type?
+
+### Q5: Understanding and comparing distributions (10 points)
+
+- Using the five number summaries, calculate if `carat_weight` or `meas_width` have any outliers according to the rule described in the textbook for outliers in boxplots. Show your code.
+- Create a graph of boxplot of `meas_width` by `cut_quality`. What can you conclude about `meas_width` from this display? Would any of these subgroups benefit from having `meas_width` re-expressed? Why or why not?
+
+### Q6: The Normal distribution (10 points)
+
+Another client of the firm, a ring maker, is interested in producing rings for the diamonds. The ring maker is working on the assumption that the diamond depth (the most important measurement for ring making) can be modeled based on a normal distribution with a mean of 3.2 and a standard distribution of 0.9.
+
+- In formal notation, write the Normal model the ring maker proposes for the diamonds
+- What features of `meas_depth` would change if we reexpressed the measured depth in inches instead of centimeters?
+- Would it be reasonable for the ring maker to introduce a ring that could accept diamonds with a depth of 4 cm to 2 cm? Explain.
+- Approximately what percent of diamonds would fit into this proposed ring? Show your work.
+- Estimate the IQR of the diamond size and show your work for how you arrived at that estimate.
+- Using the Normal model for `meas_depth`, between what range should 2.5% and 97.5% of the diamond depths be between? How about between 16% and 84%? Show all work.
+- Using the `quantile()` function, find the actual range `meas_depth` that is between 2.5% and 97.5% percentiles and between 16% and 84%. Why are the results different than the those obtained in the previous question? 
+
+## Part 2: Two variable analyis
+
+### Q7: Relationship between variables (15 points)
+
+- Make two scatterplots (side by side) of `total_sales_price` as a function of `carat_weight` and a second plot of the same relationship colored by `cut_quality`. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of `cut_quality`) and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `id`.
+    1. For the first graph, do you think there is a clear pattern? Describe the association between `total_sales_price` and `carat_weight`.
+    2. Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
+    3. Does the relationship meaningfully change when colored by `cut_quality`?
+    4. What do you estimate the correlation for the first graph to be, without using technology?
+    5. Check the conditions for correlation
+    6. Find and interpret the correlation coefficient for this relationship
+    7. When interpreting these two graphs, what can we learn about the relationship between these variables?
+
+- Make two scatterplots (side by side) of `carat_weight` as a function of `meas_width` and a second plot of the same relationship colored by `cut_quality`. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of `cut_quality`) and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `id`.
+    1. For the first graph, do you think there is a clear pattern? Describe the association between `carat_weight` and `meas_width`.
+    2. Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
+    3. Does the relationship meaningfully change when colored by `cut_quality`?
+    4. What do you estimate the correlation for the first graph to be, without using technology?
+    5. Check the conditions for correlation
+    6. Find and interpret the correlation coefficient for this relationship
+    7. When interpreting these two graphs and the previous two graphs, what can we learn about which features of a diamond lead to higher sales prices?
+
+### Q8: Putting it all together (10 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (which can be an additional graph, table, or calculation)**, write two to three paragraphs outlining what you think are the main findings of questions 1-7 and your additional graph, table, or calculation. What would you recommend to your boss as to what types of diamonds sell for the most money? What information are we missing in this dataset that we would need to better understand diamond price?
+

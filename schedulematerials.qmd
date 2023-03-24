@@ -66,7 +66,7 @@ Topics covered:
 
 -   Lecture webpage:
 
-## Lab 1.2: Exploratory data analysis (Wednesday, March 29)
+## Lab 1.2: Advanced Quarto editing (Wednesday, March 29)
 
 -   Lab files:
     -   Make sure to extract (unzip) the lab files before attempting to modify them!

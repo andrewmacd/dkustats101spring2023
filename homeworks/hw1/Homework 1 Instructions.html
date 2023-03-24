@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anonymous">
+<meta name="dcterms.date" content="2023-03-20">
+
+<title>Homework 1 Instructions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Homework 1 Instructions_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Homework 1 Instructions_files/libs/quarto-html/quarto.js"></script>
+<script src="Homework 1 Instructions_files/libs/quarto-html/popper.min.js"></script>
+<script src="Homework 1 Instructions_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Homework 1 Instructions_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Homework 1 Instructions_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Homework 1 Instructions_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Homework 1 Instructions_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Homework 1 Instructions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Homework 1 Instructions_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 1 Instructions</h1>
+<p class="subtitle lead">DKU Stats 101 Spring 2023 Session 4</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anonymous </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 20, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><img src="diamonds.jpg" class="img-fluid"></p>
+<section id="assignment-background" class="level1">
+<h1>Assignment Background</h1>
+<p>Imagine that you are an analyst at a consulting firm hired by a jewelry store company, this jewelry store is interested in how to improve the profitability of its diamond sales. Your boss asks you to write a report that identifies the key features of diamonds that best determine their price. She also sends you this dataset of recent diamond sales in their stores. Use this dataset to answer the questions below. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="assignment-instructions" class="level1">
+<h1>Assignment Instructions</h1>
+<ul>
+<li>Please leave the name as Anonymous; the homeworks are blind graded so please do not include your name.</li>
+<li>Save this document as a new document (Save As…) and rename it <code>Homework 1 Answers.qmd</code>.</li>
+<li>You can import the dataset by inserting the code <code>load(file="diamondsales.Rdata")</code> into your setup block. Make sure the data file is in the same folder as your homework file.<br>
+</li>
+<li>If I say “Interpret…” or “Explain…” that means I want at least 1-2 good quality sentences that show that you really understand the output of what R has produced. Short, incomplete sentences that fail to demonstrate you understand your output will have points deducted.</li>
+<li>While the homework isn’t a formal document, it should be written as if you are a business analyst presenting this information to a boss - i.e.&nbsp;everything should look neat and tidy, have good labels (graphs have appropriate titles and axes labels, etc.), and be well organized</li>
+<li>If you want a chance to earn extra credit, select your best graph or table (only one per student) and post it to the <code>Graph Contest</code> Teams channel. I will select a few finalists and the class will vote on the best data display. Winner receives significant extra credit.</li>
+<li>Delete the Assignment Background and Assignment Instructions sections of this document before submitting.</li>
+</ul>
+<section id="part-1-one-variable-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-one-variable-analysis">Part 1: One variable analysis</h2>
+<section id="q1-what-kind-of-dataset-do-we-have-5-points" class="level3">
+<h3 class="anchored" data-anchor-id="q1-what-kind-of-dataset-do-we-have-5-points">Q1: What kind of dataset do we have? (5 points)</h3>
+<ul>
+<li><p>According to the definitions in the textbook, describe the Five W’s for this dataset.</p></li>
+<li><p>Using the definitions in the textbook, describe the variable type for the following variables (you can review the variable definitions <a href="https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle">here</a>):</p>
+<ul>
+<li><code>id</code></li>
+<li><code>total_sales_price</code></li>
+<li><code>carat_weight</code><br>
+</li>
+<li><code>cut</code><br>
+</li>
+<li><code>color</code></li>
+<li><code>clarity</code></li>
+<li><code>cut_quality</code><br>
+</li>
+<li><code>symmetry</code><br>
+</li>
+<li><code>polish</code></li>
+<li><code>meas_length</code></li>
+<li><code>meas_width</code></li>
+<li><code>meas_depth</code></li>
+<li><code>depth_percent</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="q2-literature-review-5-points" class="level3">
+<h3 class="anchored" data-anchor-id="q2-literature-review-5-points">Q2: Literature review (5 points)</h3>
+<p>Find a news article online that discusses what are the major features that determine what people are looking for in diamonds. Paste the article link here in your homework and write a brief one to two sentence summary of the article.</p>
+<p>Based on these articles and your own personal expectations, some ways we might expect the data to be distributed or variables related? Make a bulleted list of at least <strong>three</strong> things we should expect or look for in the data and write a reason why we should expect it (no need to cite academic papers, just write down your reasons).</p>
+</section>
+<section id="q3-describing-the-data-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="q3-describing-the-data-10-points">Q3: Describing the data (10 points)</h3>
+<p>The first step in analyzing any dataset is doing some exploratory analysis of the variables.</p>
+<ul>
+<li>Make a histogram of <code>total_sales_price</code>.
+<ul>
+<li>Describe it using the three features of quantitative data.</li>
+<li>Does the histogram of <code>total_sales_price</code> surprise you? Why or why not?</li>
+<li>Which is a better measure of center of the histogram, mean or median?</li>
+<li>Make a nice table displaying the 5 number summary. You can make a nice table using either <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">kable</a> or with the <a href="https://quarto.org/docs/visual-editor/content.html#editing-tables">visual editing mode</a> of Quarto. Calculate the five number summary by using the <code>min()</code> , <code>quantile()</code>, <code>median()</code>, and <code>max()</code> functions to do this. Show your code.</li>
+<li>Calculate the standard deviation using the <code>sd()</code> function. Interpret it - is it large or small?</li>
+<li>Would this histogram benefit from a transformation, in your opinion? Why or why not? If it would, please transform it appropriately and describe the transformation.</li>
+</ul></li>
+<li>Make a bar chart comparing the mean of <code>total_sales_price</code> according to the variable <code>cut_quality</code>. Interpret this graph.
+<ul>
+<li>Hint: R imports datasets by default keeping text as text (<code>strings</code> in R world). Remember the DataCamp method to convert the <code>strings</code> into <code>factors</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="q4-comparing-categorical-variables-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="q4-comparing-categorical-variables-10-points">Q4: Comparing categorical variables (10 points)</h3>
+<ul>
+<li>One interesting piece of information the jewlery store would like to know is if there is any relationship between the clarity and the cut quality. In particular, they wonder if cut quality might differ between diamonds of higher clarity. The best way to examine this relationship is with a contingency table.
+<ul>
+<li>Hint: documentation on how to produce contingency tables can be found <a href="http://analyticswithr.com/contingencytables.html">here</a> and also using the <code>taybl()</code> function from the package <code>janitor</code> - instructions <a href="https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html">here</a>.</li>
+</ul></li>
+<li>Add margins to your table. Does it change your interpretation?</li>
+<li>Convert your table into a proportions table. Does this better help explain what the data show? What are the advantages and disadvantages of each table type?</li>
+</ul>
+</section>
+<section id="q5-understanding-and-comparing-distributions-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="q5-understanding-and-comparing-distributions-10-points">Q5: Understanding and comparing distributions (10 points)</h3>
+<ul>
+<li>Using the five number summaries, calculate if <code>carat_weight</code> or <code>meas_width</code> have any outliers according to the rule described in the textbook for outliers in boxplots. Show your code.</li>
+<li>Create a graph of boxplot of <code>meas_width</code> by <code>cut_quality</code>. What can you conclude about <code>meas_width</code> from this display? Would any of these subgroups benefit from having <code>meas_width</code> re-expressed? Why or why not?</li>
+</ul>
+</section>
+<section id="q6-the-normal-distribution-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="q6-the-normal-distribution-10-points">Q6: The Normal distribution (10 points)</h3>
+<p>Another client of the firm, a ring maker, is interested in producing rings for the diamonds. The ring maker is working on the assumption that the diamond depth (the most important measurement for ring making) can be modeled based on a normal distribution with a mean of 3.2 and a standard distribution of 0.9.</p>
+<ul>
+<li>In formal notation, write the Normal model the ring maker proposes for the diamonds</li>
+<li>What features of <code>meas_depth</code> would change if we reexpressed the measured depth in inches instead of centimeters?</li>
+<li>Would it be reasonable for the ring maker to introduce a ring that could accept diamonds with a depth of 4 cm to 2 cm? Explain.</li>
+<li>Approximately what percent of diamonds would fit into this proposed ring? Show your work.</li>
+<li>Estimate the IQR of the diamond size and show your work for how you arrived at that estimate.</li>
+<li>Using the Normal model for <code>meas_depth</code>, between what range should 2.5% and 97.5% of the diamond depths be between? How about between 16% and 84%? Show all work.</li>
+<li>Using the <code>quantile()</code> function, find the actual range <code>meas_depth</code> that is between 2.5% and 97.5% percentiles and between 16% and 84%. Why are the results different than the those obtained in the previous question?</li>
+</ul>
+</section>
+</section>
+<section id="part-2-two-variable-analyis" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-two-variable-analyis">Part 2: Two variable analyis</h2>
+<section id="q7-relationship-between-variables-15-points" class="level3">
+<h3 class="anchored" data-anchor-id="q7-relationship-between-variables-15-points">Q7: Relationship between variables (15 points)</h3>
+<ul>
+<li>Make two scatterplots (side by side) of <code>total_sales_price</code> as a function of <code>carat_weight</code> and a second plot of the same relationship colored by <code>cut_quality</code>. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of <code>cut_quality</code>) and label any points you consider to be an outlier using <code>geom_text()</code> - the label for the outlier should print the observation’s <code>id</code>.
+<ol type="1">
+<li>For the first graph, do you think there is a clear pattern? Describe the association between <code>total_sales_price</code> and <code>carat_weight</code>.</li>
+<li>Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?</li>
+<li>Does the relationship meaningfully change when colored by <code>cut_quality</code>?</li>
+<li>What do you estimate the correlation for the first graph to be, without using technology?</li>
+<li>Check the conditions for correlation</li>
+<li>Find and interpret the correlation coefficient for this relationship</li>
+<li>When interpreting these two graphs, what can we learn about the relationship between these variables?</li>
+</ol></li>
+<li>Make two scatterplots (side by side) of <code>carat_weight</code> as a function of <code>meas_width</code> and a second plot of the same relationship colored by <code>cut_quality</code>. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of <code>cut_quality</code>) and label any points you consider to be an outlier using <code>geom_text()</code> - the label for the outlier should print the observation’s <code>id</code>.
+<ol type="1">
+<li>For the first graph, do you think there is a clear pattern? Describe the association between <code>carat_weight</code> and <code>meas_width</code>.</li>
+<li>Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?</li>
+<li>Does the relationship meaningfully change when colored by <code>cut_quality</code>?</li>
+<li>What do you estimate the correlation for the first graph to be, without using technology?</li>
+<li>Check the conditions for correlation</li>
+<li>Find and interpret the correlation coefficient for this relationship</li>
+<li>When interpreting these two graphs and the previous two graphs, what can we learn about which features of a diamond lead to higher sales prices?</li>
+</ol></li>
+</ul>
+</section>
+<section id="q8-putting-it-all-together-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="q8-putting-it-all-together-10-points">Q8: Putting it all together (10 points)</h3>
+<p>Through the analysis conducted in the previous section <strong>and through at least one additional investigation of your own (which can be an additional graph, table, or calculation)</strong>, write two to three paragraphs outlining what you think are the main findings of questions 1-7 and your additional graph, table, or calculation. What would you recommend to your boss as to what types of diamonds sell for the most money? What information are we missing in this dataset that we would need to better understand diamond price?</p>
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Credit to user HROKR for making this data publicly available at https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  render: 
+    - "*.qmd"
+    - "!homeworks"
   
 name: "dku-stats-101-sp2023"
 
