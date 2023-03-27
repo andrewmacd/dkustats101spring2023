@@ -36,7 +36,7 @@ Topics covered:
 
 -   Lecture webpage: [Lecture 1.2](https://andrewm.shinyapps.io/spr2023distributions/)
 
--   Lecture activity: [Lecture 1.2 activity](activities/lecture1.2.activity.zip)
+-   Lecture activity: [Lecture 1.2 activity](activities/Lecture 1.2/lecture1.2.activity.zip)
 
 -   Quality YouTube content: [Tidyverse music video](https://www.youtube.com/watch?v=p8Py9C8iq2s&ab_channel=TheRaf)
 

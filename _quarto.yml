@@ -4,7 +4,7 @@ project:
   render: 
     - "*.qmd"
     - "!homeworks"
-    - "!activites"
+    - "!activities"
     - "!labs"
   
 name: "dku-stats-101-sp2023"

@@ -2,10 +2,6 @@
 title: "R Manual"
 ---
 
----
-title: "R Help Manual"
----
-
 ```{r setup, include=FALSE}
 library(tidyverse)
 library (ggcorrplot)
