@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "!homeworks"
     - "!activites"
+    - "!labs"
   
 name: "dku-stats-101-sp2023"
 

@@ -47,7 +47,7 @@ Topics covered:
 
 ## Lab 1.1: R and Quarto familiarization (Monday, March 27)
 
--   Lab files:
+-   Lab files: [Lab 1.1](labs/lab1.1.zip)
     -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, March 28)

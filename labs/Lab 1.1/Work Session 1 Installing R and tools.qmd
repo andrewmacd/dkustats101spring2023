@@ -1,0 +1,68 @@
+---
+title: "Introduction to Quarto"
+author: "Professor MacDonald"
+date: "3/27/2022"
+output:
+  html_document:
+    toc: true
+---
+
+# Quarto introduction
+
+Quarto is a document container that allows you to mix text and code to produce reproducible (see [here](https://www.displayr.com/what-is-reproducible-research/) for why reproducibility is important) results and auto-generate high quality document.
+
+To start with, let's complete the online Quarto tutorial, you can find it [here](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+> Download the file in the tutorial and examine all of the parts of the tutorial listed on the website. Try changing around some of the text and code. And rendering. See how it changes your final document.
+
+> Once you have successfully made some edits to the Quarto document and rendered it, show it to me so that I can verify you have completed it before moving on to the next step.
+
+# Practicing with Quarto
+
+To complete this lab, please do a simple investigation into the distribution of `mpg` (miles per gallon) and `wt` (weight) from the `mtcars` built-in dataset.
+
+1.  Select File-\>New Quarto Document
+2.  Insert a code block and then make a `ggplot` that displays the distribution of `mpg`
+3.  Add some text that describes the three features of the `mpg` distribution
+4.  Repeat for the variable `wt`
+5.  Write a brief conclusion of your investigation and then Render the result as an HTML file
+
+A few additional tips to help you along:
+
+## Insert code block
+
+In particular, you will need to use the Insert a new code chunk button to add a code block
+
+![](Insert%20code%20block.png)
+
+The code block, like the one shown below, has some options for the code block. In this case, I added the line `#| echo: true` which means that both the code and the results of the code will be printed on the document. By default, only the results of the code will be shown.
+
+Some other options that will be helpful is setting `warning: false` and `message: false` to stop RStudio from printing irrelevant or not helpful text. You can see in the example below that the `library(dplyr)` line of code prints some nuisance text that would not be printed if I had added the `message: false` option.
+
+```{r}
+#| echo: true
+#| label: test-code
+
+library(dplyr)
+
+mtcars %>% 
+  summarise(mean_mpg = mean(mpg))
+```
+
+## Navigating your document
+
+You can navigate your document one of two ways. The first way to navigate the document is via the Outline window on the right hand side of the document.
+
+![](navigation%202.png)
+
+To make your document navigable, it is important to specify headings for each of your document sections via the Style menu.
+
+![](headings.png)
+
+You can also navigate your document by using the menu at the bottom left, which will also let you jump to specific code blocks. This is why it is important to name your code blocks.
+
+![](navigation.png)
+
+## Finishing up 
+
+Once you've done that, please show me your result and then you can keep working your way through the [Computations](https://quarto.org/docs/get-started/computations/rstudio.html) tutorial on the Quarto website until the end of class.
