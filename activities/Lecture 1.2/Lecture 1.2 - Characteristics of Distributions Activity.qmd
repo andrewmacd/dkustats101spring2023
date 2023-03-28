@@ -1,5 +1,5 @@
 ---
-title: "Characteristics of Distributions Activity"
+title: "Lecture 1.2 - Characteristics of Distributions Activity"
 subtitle: "DKU Stats 101 Spring 2023"
 author: "Professor MacDonald"
 date: "3/23/2023"

@@ -6,6 +6,7 @@ project:
     - "!homeworks"
     - "!activities"
     - "!labs"
+    - "!lectures"
   
 name: "dku-stats-101-sp2023"
 
