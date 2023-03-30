@@ -1,5 +1,5 @@
 ---
-title: "Association and correlation"
+title: "Lecture 2.1 - Association and correlation"
 subtitle: "DKU Stats 101 Spring 2023"
 author: "Professor MacDonald"
 date: "3/30/2023"

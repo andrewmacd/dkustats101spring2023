@@ -93,9 +93,9 @@ Topics covered:
 
 -   Does correlation imply causation?
 
--   Lecture webpage: [Lecture 1.4](https://andrewm.shinyapps.io/spr2023association)
+-   Lecture webpage: [Lecture 2.1](https://andrewm.shinyapps.io/spr2023association)
 
--   Lecture activity: [Lecture 1.4 activity](activities/Lecture 1.4/lecture1.4.activity.zip)
+-   Lecture activity: [Lecture 2.1 activity](activities/Lecture 2.1/lecture2.1.activity.zip)
 
 ## Online lab 2.1 (due on Friday, March 31 at 11:59:00)
 
