@@ -75,7 +75,7 @@ Topics covered:
 
 ## Unit 1 homework (due April 2nd at 11:59:00 pm)
 
--   Homework files:
+-   Homework files: [Unit 1 homework instructions](homeworks/hw1/hw1.zip)
 
 # Unit 2: Relationships between variables
 
@@ -93,7 +93,9 @@ Topics covered:
 
 -   Does correlation imply causation?
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 1.4](https://andrewm.shinyapps.io/spr2023association)
+
+-   Lecture activity: [Lecture 1.4 activity](activities/Lecture 1.4/lecture1.4.activity.zip)
 
 ## Online lab 2.1 (due on Friday, March 31 at 11:59:00)
 

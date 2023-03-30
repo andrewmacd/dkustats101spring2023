@@ -58,7 +58,7 @@ At the start of each code block, you should label each code block. **Note: you w
 
 > Add a label to your setup code block and render to verify it works
 
-Note that code blocks that produce a figure or table should have a special label. Figures should be labeled as `#| label: fig-<name of the graph>` and tables should be labeled with `#| label: tbl-<name of the table>`. This allows you to add captions and other control statements to the table or graph. An example of some of the things you can control:
+Note that code blocks that produce a figure or table should have a special label. Figures should be labeled as `#| label: fig-somename` and tables should be labeled with `#| label: tbl-somename`. This allows you to add captions and other control statements to the table or graph. An example of some of the things you can control:
 
 ![](Figure%20labels.png)
 
@@ -86,9 +86,9 @@ You can insert a table in the Visual editor mode using the following menu option
 
 ![](Table%20options.png)
 
-> Make a table using the Table insert command with two rows and two columns in the Comparing sodium and calories section of the document. Caption the table as `Summary comparison between sodium and calories`
+> Make a table using the Table insert command with two rows and three columns in the Comparing the variables `Sodium` and `Calories` section of the document. Caption the table as `Summary comparison between sodium and calories`
 
-These tables are a good option for when you are making simple table with information of your own produced outside of RStudio or you want to include very simple calculations. The way you can add very simple calculations is with in-line code. Within a cell of the table, you can add some simple code by typing: `` `r `` `` 1+1` ``. You can replace `1+1` with things like `mean(mtcars$mpg)` (note: make sure you still have the `` `r `` part at the beginning) to perform more useful calculations.
+These tables are a good option for when you are making simple table with information of your own produced outside of RStudio or you want to include very simple calculations. The way you can add very simple calculations is with in-line code. Within a cell of the table, you can add some simple code by typing: `` `r `` `` 1+1` `` (note: type this directly, don't copy and paste from this document or else you will get an error). You can replace `1+1` with things like `mean(mtcars$mpg)` (note: make sure you still have the `` `r `` part at the beginning) to perform more useful calculations.
 
 > In the table you have created, add code to calculate the mean of the two variables in the first row and the standard deviation of both variables in the second row. Render the document to verify it worked.
 
@@ -96,7 +96,7 @@ These tables are a good option for when you are making simple table with informa
 
 For more complex tables, you will want to make the tables programmatically rather than by hand. The easiest and best way to do this is with the `kable()` function (documentation [here](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html)). You can pass any data frame (the standard way a dataset is stored) to `kable()` to produce a good quality table. A simple example would be `kable(mtcars)`. To use the `kable()` function you need to have the `knitr` library loaded.
 
-> Add the command to load the `knitr` library to your setup code block. Now filter your dataset to only show the highest sodium items and make a table using `kable()` in the High sodium items section. Remember the special labels that table code blocks must have. Render the document to verify this worked.
+> Add the command to load the `knitr` library to your setup code block. Now filter your dataset to only show the highest sodium items (greater than 1000) and make a table using `kable()` in the High sodium items section. Remember the special labels that table code blocks must have. Render the document to verify this worked.
 
 `kable()` can be extended by using the `kableExtra` package (documentation [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)). Install the `kableExtra` package, load it in your setup code block. You can add on `kableExtra()` elements by doing `<table name> %>% kable_styling()`.
 
@@ -104,4 +104,4 @@ For more complex tables, you will want to make the tables programmatically rathe
 
 ## Additional investigations
 
-If you've made it this far, good job! Keep working on your document by addingin additional sections and code blocks to investigate various properties of the `mcdonalds` dataset until the lab time finishes.
+If you've made it this far, good job! Keep working on your document by adding in additional sections and code blocks to investigate various properties of the `mcdonalds` dataset until the lab time finishes.
