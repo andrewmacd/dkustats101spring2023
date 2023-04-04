@@ -102,27 +102,35 @@ Instead of using your estimate from before, this time enter the slope and interc
 
 9.	Make a residual plot & standard deviation
 
-Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of $\beta$. Note that you will need to load `broom` library for this code to work.
+Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of $\beta$. 
+
+Note that you will need to load `broom` library for this code to work. You will be using the `augment()` function that adds the residuals to a dataset for easy display and manipulation. 
+
+> Note that in the lecture we viewed the predictor variable on the $x$ axis of the residual plot. Here we are switching to viewing the response variable on the $x$ axis here. If you think about it, the two plots are equivalent, simply rotated. But once we switch to thinking in higher dimensions, the only plot that makes sense is the residual plot with the response variable plotted.
 
 ```
+# Save the model
 <modelname> <- lm(<predictor.variable> ~ <response.variable>, data=<dataset>)
+# Create the residuals database
 <modelname>.augmented <- augment(<modelname>, <dataset>)
 
-ggplot(global.data.augmented.log, aes(x=.resid)) +
+# Residual histogram plot
+ggplot(<modelname>.augmented, aes(x=.resid)) +
   geom_histogram(fill="blue4") +
   labs(x="Residuals", y="Count")
   
-ggplot(<modelname>.augmented, aes(<y.variable>, .resid)) + 
+# Residual scatterplot  
+ggplot(<modelname>.augmented, aes(<response variable>, .resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "blue", linetype='dashed') + 
-  labs(y = "Residuals", x="<variable.name>")
+  labs(y = "Residuals", x="<name of response variable>")
 ```
 
 - What can you conclude from the residual plots and the standard deviation calculation of the residuals? Does it indicate a good model fit or not?
 
 ## Model fit
 
-10.	Calculate the `R` squared
+10.	Interpret the `R` squared
 
 What can you conclude about your model based on the `R` squared?
 

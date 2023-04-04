@@ -185,18 +185,26 @@ scatterplot + geom_abline(slope=&lt;regression.slope.estimate&gt;, intercept=&lt
 <ol start="9" type="1">
 <li>Make a residual plot &amp; standard deviation</li>
 </ol>
-<p>Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of <span class="math inline">\(\beta\)</span>. Note that you will need to load <code>broom</code> library for this code to work.</p>
-<pre><code>&lt;modelname&gt; &lt;- lm(&lt;predictor.variable&gt; ~ &lt;response.variable&gt;, data=&lt;dataset&gt;)
+<p>Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of <span class="math inline">\(\beta\)</span>.</p>
+<p>Note that you will need to load <code>broom</code> library for this code to work. You will be using the <code>augment()</code> function that adds the residuals to a dataset for easy display and manipulation.</p>
+<blockquote class="blockquote">
+<p>Note that in the lecture we viewed the predictor variable on the <span class="math inline">\(x\)</span> axis of the residual plot. Here we are switching to viewing the response variable on the <span class="math inline">\(x\)</span> axis here. If you think about it, the two plots are equivalent, simply rotated. But once we switch to thinking in higher dimensions, the only plot that makes sense is the residual plot with the response variable plotted.</p>
+</blockquote>
+<pre><code># Save the model
+&lt;modelname&gt; &lt;- lm(&lt;predictor.variable&gt; ~ &lt;response.variable&gt;, data=&lt;dataset&gt;)
+# Create the residuals database
 &lt;modelname&gt;.augmented &lt;- augment(&lt;modelname&gt;, &lt;dataset&gt;)
 
-ggplot(global.data.augmented.log, aes(x=.resid)) +
+# Residual histogram plot
+ggplot(&lt;modelname&gt;.augmented, aes(x=.resid)) +
   geom_histogram(fill="blue4") +
   labs(x="Residuals", y="Count")
   
-ggplot(&lt;modelname&gt;.augmented, aes(&lt;y.variable&gt;, .resid)) + 
+# Residual scatterplot  
+ggplot(&lt;modelname&gt;.augmented, aes(&lt;response variable&gt;, .resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "blue", linetype='dashed') + 
-  labs(y = "Residuals", x="&lt;variable.name&gt;")</code></pre>
+  labs(y = "Residuals", x="&lt;name of response variable&gt;")</code></pre>
 <ul>
 <li>What can you conclude from the residual plots and the standard deviation calculation of the residuals? Does it indicate a good model fit or not?</li>
 </ul>
@@ -204,7 +212,7 @@ ggplot(&lt;modelname&gt;.augmented, aes(&lt;y.variable&gt;, .resid)) +
 <section id="model-fit" class="level2">
 <h2 class="anchored" data-anchor-id="model-fit">Model fit</h2>
 <ol start="10" type="1">
-<li>Calculate the <code>R</code> squared</li>
+<li>Interpret the <code>R</code> squared</li>
 </ol>
 <p>What can you conclude about your model based on the <code>R</code> squared?</p>
 <ol start="11" type="1">
