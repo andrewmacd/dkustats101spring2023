@@ -75,7 +75,7 @@ Topics covered:
 
 ## Unit 1 homework (due April 2nd at 11:59:00 pm)
 
--   Homework files: [Unit 1 homework instructions](homeworks/hw1/hw1.zip)
+-   Homework files: [Unit 1 homework instructions](homeworks/Homework 1/homework1.zip)
 
 # Unit 2: Relationships between variables
 
@@ -143,6 +143,10 @@ Topics covered:
 -   Straightening scatterplots
 
 -   Lecture webpage:
+
+## Online lab 2.2 (due on Friday, April 7 at 11:59:00)
+
+-   [Working with Dates and Times in R](https://www.datacamp.com/courses/working-with-dates-and-times-in-r)
 
 ## Unit 2 homework - midterm project - progress check (due Sunday, April 9 at 11:59:00)
 
