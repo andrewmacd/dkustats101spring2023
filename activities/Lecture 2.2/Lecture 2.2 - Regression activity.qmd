@@ -102,27 +102,29 @@ Instead of using your estimate from before, this time enter the slope and interc
 
 9.	Make a residual plot & standard deviation
 
-Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of $\beta$
+Fortunately, RStudio can easily make a residual plot. When you run a regression, within the stored regression RStudio stores the values of $\beta$. Note that you will need to load `broom` library for this code to work.
 
 ```
-<dataset>$resids <- lmodel$residuals
+<modelname> <- lm(<predictor.variable> ~ <response.variable>, data=<dataset>)
+<modelname>.augmented <- augment(<modelname>, <dataset>)
 
-residplot <- ggplot(<dataset>, aes(x=<predictor>, y=resids))+geom_point()
-
-residplot+geom_abline(slope=0, intercept=0)
-
-	sd(<dataset>$resids)
-
-	residdist <- ggplot(<dataset>, aes(x=resids))+geom_histogram()
+ggplot(global.data.augmented.log, aes(x=.resid)) +
+  geom_histogram(fill="blue4") +
+  labs(x="Residuals", y="Count")
+  
+ggplot(<modelname>.augmented, aes(<y.variable>, .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "blue", linetype='dashed') + 
+  labs(y = "Residuals", x="<variable.name>")
 ```
 
 - What can you conclude from the residual plots and the standard deviation calculation of the residuals? Does it indicate a good model fit or not?
 
 ## Model fit
 
-10.	Calculate the r-squared
+10.	Calculate the `R` squared
 
-What can you conclude about your model based on the r squared?
+What can you conclude about your model based on the `R` squared?
 
 11.	Which observations are obvious outliers? How does your line of best fit change if you exclude some of the outliers?
 
