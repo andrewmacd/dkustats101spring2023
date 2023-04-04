@@ -1,0 +1,518 @@
+---
+title: "Homework 1 Sample Solutions"
+author: "Anonymous"
+date: "3/31/2023"
+format: html
+toc: true
+execute:
+  echo: false
+  warning: false
+  message: false
+output: html_file
+subtitle: DKU Stats 101 Spring 2023 Session 2
+---
+
+```{r}
+#| label: setup
+
+# Load any necessary libraries
+library(tidyverse)
+library(knitr)
+library(gridExtra)
+
+# Load the data
+load(file="diamondsales.Rdata")
+
+# Sets the graphical theme
+theme_set(theme_classic())
+```
+
+## Part 1: One variable analysis
+
+### Q1: What kind of dataset do we have? (5 points)
+
+-   According to the definitions in the textbook, describe the Five W's for this dataset.
+
+> -   *Who* : Diamonds
+> -   *What* : Features about the diamonds and total sales prices
+> -   *When* : Recent, not specified
+> -   *Where*: Store Record
+> -   *Why* : Identify the key features of diamonds that best determine their price
+
+-   Using the definitions in the textbook, describe the variable type for the following variables (you can review the variable definitions [here](https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle)):
+
+> -   *Categorical variables* : `cut`, `color`, `clarity`, `cut_quality`, `symmetry`, `polish`
+> -   *Identifiers* : `id`
+> -   *Quantitative variables*: `total_sales_price`, `carat_weight`, `meas_length`, `meas_width`, `meas_depth`, `depth_percent`
+
+> **Points of emphasis:**
+>
+> -   You don't need to know all of the details for where the dataset came from for the Five Ws but you do need to categorize all the variables properly.
+
+### Q2: Literature review (5 points)
+
+Example: [GIA Diamond Quality Factor](https://www.gia.edu/diamond-quality-factor)
+
+A diamond's value is often affected by the rarity of its clarity, color, cut, and carat weight.
+
+1.  Carat weight strongly related to price.
+2.  Cut quality strongly related ro price.
+3.  Color strongly related to price.
+
+> **Points of emphasis:**
+>
+> -   The article must deal with diamonds data
+
+### Q3: Describing the data (10 points)
+
+The first step in analyzing any dataset is doing some exploratory analysis of the variables.
+
+-   Make a histogram of `total_sales_price`.
+
+    ```{r}
+    #| label: fig-q3a
+    #| fig-cap: "Total sales price histogram"
+    
+    ggplot(diamonds.recent.sales, aes(x=total_sales_price)) +
+      geom_histogram(color="white") + labs(title="Distribution of total sales price",x="Price in dollars",y="Count")
+    ```
+
+-   Describe it using the three features of quantitative data.
+
+> -   *Shape*: appears to be right skewed with several outliers at high values, asymmetrical. Unimodal.
+>
+> -   *Center*: mean income is `r round(mean(diamonds.recent.sales$total_sales_price, na.rm=TRUE))`, median is `r median(diamonds.recent.sales$total_sales_price)`; as you can see, the mean is being "pulled" to higher values due to the right skew.
+>
+> -   *Spread*: IQR is `r IQR(diamonds.recent.sales$total_sales_price)`, so 50% of the observations fall within `r IQR(diamonds.recent.sales$total_sales_price)` dollars, the middle half of the data. The standard deviation is `r round(sd(diamonds.recent.sales$total_sales_price))`, which is about `r round(sd(diamonds.recent.sales$total_sales_price)/IQR(diamonds.recent.sales$total_sales_price))*100`% of the IQR, because the standard deviation is affected by extreme outliers.
+
+-   Does the histogram of `total_sales_price` surprise you? Why or why not?
+
+> -   Not really. Right skewed makes sense because rare diamonds are extremely pricy.
+
+-   Which is a better measure of center of the histogram, mean or median?
+
+> -   In this case, because of the right skew, the median is a better measure of center.
+
+-   Make a nice table displaying the 5 number summary. You can make a nice table using either [kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) or with the [visual editing mode](https://quarto.org/docs/visual-editor/content.html#editing-tables) of Quarto. Calculate the five number summary by using the `min()` , `quantile()`, `median()`, and `max()` functions to do this. Show your code.
+
+    ```{r}
+    #| label: tbl-q3b
+    #| tbl-cap: "Total sales price 5 number summary"
+    
+        kable(diamonds.recent.sales %>%
+
+        summarise(min(total_sales_price),  quantile(total_sales_price, probs=0.25), median(total_sales_price), quantile(total_sales_price, probs=0.75), max(total_sales_price)), 
+
+      col.names = c("Min", "25%", "Median", "75%", "Max"))
+    ```
+
+> There are quite a few other ways to generate this result, the above is just one example.
+
+-   Calculate the standard deviation using the `sd()` function. Interpret it - is it large or small?
+
+> Standard deviation(sd) is a kind of evaluation for how far each value is from the mean, representing the the spread of the data distribution, so standard deviation is often discussed at the same time as the mean. The result of `sd()` equals to the square root of the variance, with the same unit of the original data, but it can be greatly affected by outliers or skew. In this case, the standard deviation is `r round(sd(diamonds.recent.sales$total_sales_price))` which is quite large given that the mean is `r round(mean(diamonds.recent.sales$total_sales_price, na.rm=TRUE))`, besides, most of the data is around \$0-\$4000 based on the histogram - this is the influence of outliers.
+
+-   Would this histogram benefit from a transformation, in your opinion? Why or why not? If it would, please transform it appropriately and describe the transformation.
+
+> Yes. The distribution is right skewed so lower power transformations transformation could maybe solve the problem of outliers without deforming the distribution too much on the other side. The following figure is the histogram of `total_sales_price`, which seems more symmertric, though the log form makes it somewhat harder to interpret. Further, more fine tuned transformations might produce better results.
+
+```{r}
+#| label: fig-q3c
+#| fig-cap: "Rexpression of total sales price"
+
+options(scipen = 999)
+
+ ggplot(diamonds.recent.sales, aes(x=log(total_sales_price))) +
+   geom_histogram(color="white") + 
+   labs(title="Distribution of total sales price",x="Log price in dollars",y="Count")
+```
+
+-   Make a bar chart comparing the mean of `total_sales_price` according to the variable `cut_quality`. Interpret this graph.
+
+    ```{r}
+    #| label: fig-q3d
+    #| fig-cap: "Total sales price by cut quality"
+    
+    factor_cut_quality <- as.factor(diamonds.recent.sales$cut_quality)
+      ggplot(diamonds.recent.sales, aes(x=factor_cut_quality, y=total_sales_price)) +
+      geom_bar(aes(fill=factor_cut_quality),stat="summary", fun="mean") + 
+      labs(title="Bar chart of total sales price",
+           x="Cut quality",
+           y="Average total sales price") +
+      theme(legend.position="none")
+      
+    ```
+
+> This bar chart shows that unknown cut quality has the highest price. A difference in price of \~\$9000 is large. Price of excellent-cutted category is only slightly higher than very-good-cutted category. It seems that unknown cut gems indicate a rare cut of a diamond brings a huge price premium.
+
+> **Points of emphasis:**
+>
+> -   Well labeled graphs, with appropriate (not variable name) names for the `x` and `y` axes.
+> -   Legend labeled
+> -   Bar graphs use color (-1 if not)
+> -   Graphs that contain the correct amount of information
+> -   Reasonable, thoughtful interpretations of the requested statistics, not just one or two word answers. - Correct results for the requested statistics
+
+### Q4: Comparing categorical variables (10 points)
+
+-   One interesting piece of information the jewelry store would like to know is if there is any relationship between the clarity and the cut quality. In particular, they wonder if cut quality might differ between diamonds of higher clarity. The best way to examine this relationship is with a contingency table.
+
+```{r}
+#| label: tbl-q4a
+#| tbl-cap: "Contingency table of clarity of diamonds on cut quality"
+
+clarity.cut.table <- table(factor(diamonds.recent.sales$clarity), factor(diamonds.recent.sales$cut_quality))
+
+kable(clarity.cut.table) 
+
+```
+
+> The question is about diamonds of higher clarity, so we can focus on VS, VVS, IF. Overall, we can see that excellent cuts have the largest counts and very good cuts have the least. With the same clarity category, the ratios of each cut seem about the same.
+
+-   Add margins to your table. Does it change your interpretation?
+
+```{r}
+#| label: tbl-q4b
+#| tbl-cap: "Contingency table w/ margins of clarity of diamonds on cut quality"
+
+kable(addmargins(clarity.cut.table))
+```
+
+> Adding margins to the table allows us to see the total count for each row and column, and makes it more clear that the ratio in each cut category is about the same.
+
+-   Convert your table into a proportions table. Does this better help explain what the data show? What are the advantages and disadvantages of each table type?
+
+```{r}
+#| label: tbl-q4c
+#| tbl-cap: "Proportions table of clarity of diamonds on cut quality"
+
+kable(prop.table(clarity.cut.table,1) )
+```
+
+> In this case, I prefer the proportion table--it is easier to see the relative count of percents according to clarity category.
+
+> -   The advantage of the count table is that it gives a clear idea of the actual number of diamonds in each category, which may be important for certain analyses.
+> -   The advantage of the proportions table is that it shows the distribution of categories within each group, which can be useful for comparing between categories and identifying patterns.
+> -   The disadvantage of the proportions table is that it does not show the actual number of diamonds in each category.
+
+> **Points of emphasis:**
+>
+> -   Reasonable, thoughtful interpretations of the requested statistics, not just one or two word answers.
+> -   Correct results for the requested statistics
+
+### Q5: Understanding and comparing distributions (10 points)
+
+-   Using the five number summaries, calculate if `carat_weight` or `meas_width` have any outliers according to the rule described in the textbook for outliers in boxplots. Show your code.
+
+    ```{r}
+    #| label: tbl-q5a1
+    #| echo: true
+    #| tbl-cap:
+    #|   - "Carat weight 5 number summary"
+    #|   - "Measured width 5 number summary"
+
+    
+    
+     kable(diamonds.recent.sales %>%
+        summarise(min(carat_weight),  quantile(carat_weight, probs=0.25), median(carat_weight), quantile(carat_weight, probs=0.75), max(carat_weight)), 
+      col.names = c("Min", "25%", "Median", "75%", "Max"))
+     
+    kable(
+      diamonds.recent.sales %>%
+        summarise(min(meas_width),  quantile(meas_width, probs=0.25), median(meas_width), quantile(meas_width, probs=0.75), max(meas_width)), 
+      col.names = c("Min", "25%", "Median", "75%", "Max"))
+
+    ```
+
+> For `carat_weight:`
+
+```{r}
+#| label: q5a2
+#| echo: true
+
+carat_weight_med <- median(diamonds.recent.sales$carat_weight)
+carat_weight_lq <- quantile(diamonds.recent.sales$carat_weight, probs=0.25)
+carat_weight_uq <- quantile(diamonds.recent.sales$carat_weight, probs=0.75)
+carat_weight_iqr <- IQR(diamonds.recent.sales$carat_weight)
+carat_weight_uf <- carat_weight_uq + 1.5*carat_weight_iqr
+carat_weight_lf <- carat_weight_lq - 1.5*carat_weight_iqr
+```
+
+> -   $median=`r carat_weight_med`$
+> -   $IQR=`r carat_weight_uq`-`r carat_weight_lq`=`r carat_weight_iqr`$
+> -   $Upper\,fence=`r carat_weight_uq`+1.5\cdot`r carat_weight_iqr`=`r carat_weight_uf`$
+> -   $Lower\,fence=`r carat_weight_lq`-1.5\cdot`r carat_weight_iqr`=`r carat_weight_lf`$ or $0$
+> -   According to this rule, there are upper outliers of `carat_weight`.
+
+```{r}
+#| label: tbl-q5a3
+#| tbl-cap: "Outlier identities for carat weight"
+
+carat.weight.outliers <- diamonds.recent.sales[diamonds.recent.sales$carat_weight>carat_weight_uf, c("id", "carat_weight")]
+
+kable(carat.weight.outliers[order(-carat.weight.outliers$carat_weight), ],
+      col.names = c("ID", "Carat Weight"),
+      row.names = FALSE)
+```
+
+> For `meas_width`:
+
+```{r}
+#| label: q5a4
+#| echo: true
+
+ meas_width_med <- median(diamonds.recent.sales$meas_width)
+ meas_width_lq <- quantile(diamonds.recent.sales$meas_width, probs=0.25)
+ meas_width_uq <- quantile(diamonds.recent.sales$meas_width, probs=0.75)
+ meas_width_iqr <- IQR(diamonds.recent.sales$meas_width)
+ meas_width_uf <- meas_width_uq + 1.5*meas_width_iqr
+ meas_width_lf <- meas_width_lq - 1.5*meas_width_iqr
+```
+
+> -   $median=`r meas_width_med`$
+> -   $IQR=`r meas_width_uq`-`r meas_width_lq`=`r meas_width_iqr`$
+> -   $Upper\,fence=`r meas_width_uq`+1.5\cdot`r meas_width_iqr`=`r meas_width_uf`$
+> -   $Lower\,fence=`r meas_width_lq`-1.5\cdot`r meas_width_iqr`=`r meas_width_lf`$
+> -   According to this rule, there're upper outliers of `meas_width`.
+
+```{r}
+#| label: tbl-q5a5
+#| tbl-cap: "Outlier identities for measured width"
+
+measw.outliers <- diamonds.recent.sales[diamonds.recent.sales$meas_width>meas_width_uf, c("id", "meas_width")]
+
+kable(measw.outliers[order(-measw.outliers$meas_width), ],
+      col.names = c("ID", "Measured width"),
+      row.names = FALSE)
+```
+
+-   Create a graph of boxplot of `meas_width` by `cut_quality`. What can you conclude about `meas_width` from this display? Would any of these subgroups benefit from having `meas_width` re-expressed? Why or why not?
+
+```{r}
+#| label: fig-q5b
+#| fig-cap: "Measured width by category"
+
+ ggplot(diamonds.recent.sales, aes(x=factor(cut_quality),y=meas_width,fill=cut_quality)) +
+   geom_boxplot() +
+   labs(title=" Boxplots of measured width by cut quality",
+        x="Cut quality",y="Measured width", 
+        caption="Red dot indicates mean") +
+   theme(plot.title=element_text(hjust=0.5),legend.position="none")+
+  stat_summary(fun="mean",geom="point",shape=20,size=2,color="red",alpha=0.7)
+
+```
+
+> The distribution of `meas_width` for the diamonds with excellent cut and very good cut are right skewed, while the distribution of `meas width` for the diamonds with unknown cut are slightly right skewed(given that mediam is smaller than mean, the majority of outliers are of high values). These sub-distributions may benefit from a log type transformation but one would need to check to make sure. 
+
+> **Points of emphasis:**
+>
+> -   Boxplots well labeled, with no legend (-1 if legend)
+> -   Proper calculation of 5 number summaries
+> -   Shows work for calcuation of outliers
+> -   Discusses shape, center, and spread for analysis of boxplot
+> -   Shows understanding of appropriate conditions for reexpression
+
+### Q6: The Normal distribution (10 points)
+
+Another client of the firm, a ring maker, is interested in producing rings for the diamonds. The ring maker is working on the assumption that the diamond depth (the most important measurement for ring making) can be modeled based on a normal distribution with a mean of 3.2 and a standard distribution of 0.9.
+
+-   In formal notation, write the Normal model the ring maker proposes for the diamonds
+
+> $N(3.2, 0.9)$
+
+-   What features of `meas_depth` would change if we reexpressed the measured depth in inches instead of centimeters?
+
+> The specific values for measures of center and spread would change, but the data's relationship with each other would remain the same.
+
+-   Would it be reasonable for the ring maker to introduce a ring that could accept diamonds with a depth of 4 cm to 2 cm? Explain.
+
+> It would depend on the costs of making such a ring, but since the range given is about $\pm1$ standard deviation from the mean, it would fit about 65% of the diamonds, which seems like a reasonably large percent of the diamond market.
+
+-   Approximately what percent of diamonds would fit into this proposed ring? Show your work.
+
+Assuming the Normal model as specified in the Question 6 description, the bottom half would be:
+
+```{r}
+#| label: q6a
+#| echo: true
+
+# Mean - lower value / sd
+z.score.lower <- (2 - 3.2) / 0.9
+
+# Get lower percentage; pnorm gives the exact probability point and subtract
+# from the mean to get the total probability mass
+lower.percent <- 0.5 - pnorm(z.score.lower)
+
+round(lower.percent, 2)
+```
+
+```{r}
+#| label: q6b
+#| echo: true
+
+# Mean - lower value / sd
+z.score.upper <- (4 - 3.2) / 0.9
+
+# Get lower percentage; pnorm gives the exact probability point and subtract
+# this from the mean to get the upper half probility
+upper.percent <- pnorm(z.score.upper) - 0.5 
+
+round(upper.percent, 2)
+
+round(upper.percent + lower.percent, 2)
+```
+
+> About 72% of diamonds would fit into this proposed ring, assuming Normal probability.
+
+In reality, we can find the same figure directly in our dataset with:
+
+```{r}
+#| label: q6c
+#| echo: true
+
+# Create the cumulative probability distribution of the variable
+mdepth.cum.dist <- ecdf(diamonds.recent.sales$meas_depth)
+
+mdepth.cum.dist(4) - mdepth.cum.dist(2)
+```
+
+> In the dataset provided to you, the range between 2 and 4 includes about 88% of the diamonds.
+
+-   Estimate the IQR of the diamond size and show your work for how you arrived at that estimate.
+
+```{r}
+#| label: q6d
+#| echo: true
+
+IQR(diamonds.recent.sales$meas_depth)
+```
+
+> The IQR is 0.7425.
+
+-   Using the Normal model for `meas_depth`, between what range should 2.5% and 97.5% of the diamond depths be between? How about between 16% and 84%? Show all work.
+
+```{r}
+#| label: q6e
+#| echo: true
+
+# Range between 2.5% and 97.5%
+round(c((qnorm(0.025) * 0.9) + 3.2, (qnorm(0.975) * 0.9) + 3.2), 2)
+
+# Range between 16% and 84%
+round(c((qnorm(0.16) * 0.9) + 3.2, (qnorm(0.84) * 0.9) + 3.2), 2)
+```
+
+> With the normal model, the 2.5% and 97.5% of the diamond depths should between ~1.44 and ~4.96. The 16% and 84% of the diamond depths should between ~2.3 and ~4.1.
+
+-   Using the `quantile()` function, find the actual range `meas_depth` that is between 2.5% and 97.5% percentiles and between 16% and 84%. Why are the results different than the those obtained in the previous question?
+
+```{r}
+#| label: q6f
+#| echo: true
+
+round(quantile(diamonds.recent.sales$meas_depth, c(0.025, 0.975)), 2)
+round(quantile(diamonds.recent.sales$meas_depth, c(0.16, 0.84)), 2)
+```
+
+> The actual 2.5% and 97.5% percentile are ~2.26 and ~5.20.The 16% and 84% percentile are ~2.61 and ~3.79. The results indicate that the distribution is not perfectly normal and is somewhat more compressed than one would expect for a normal distribution. This likely indicates some outliers inflating the size of the standard deviation.
+
+## Part 2: Two variable analyis
+
+### Q7: Relationship between variables (15 points)
+
+-   Make two scatterplots (side by side) of `total_sales_price` as a function of `carat_weight` and a second plot of the same relationship colored by `cut_quality`. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of `cut_quality`) and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `id`.
+
+```{r}
+#| label: fig-q7a
+#| fig-cap: 
+#|   - "Total sales vs. carat weight"
+#|   - "Total sales vs. carat weight by cut quality"
+#| layout-ncol: 2
+#| column: page
+
+ggplot(diamonds.recent.sales, aes(x=carat_weight, y=total_sales_price)) + geom_point(alpha = 0.5, position = "jitter")+
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_text(data=diamonds.recent.sales[diamonds.recent.sales$carat_weight<1 &diamonds.recent.sales$total_sales_price> 40000,], 
+            aes(label=id), size=3, vjust=2,color="red") +
+  labs(title="Scatter plot of total sales price vs carat weight", 
+       x="Carat weight", y="Total sale prices")
+
+
+
+ggplot(diamonds.recent.sales, aes(x=carat_weight, y=total_sales_price,color=cut_quality)) + geom_point(alpha = 0.5, position = "jitter")+
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_text(data=diamonds.recent.sales[diamonds.recent.sales$carat_weight<1 &diamonds.recent.sales$total_sales_price> 40000,], 
+            aes(label=id), size=3, vjust=2,color="red") +
+  labs(title="Scatter plot of total sales price vs carat weight", 
+       x="Carat weight", y="Total sale prices")
+```
+
+1.  For the first graph, do you think there is a clear pattern? Describe the association between `total_sales_price` and `carat_weight`.
+
+> There appears to be a positive linear relationship.
+>
+> -   Direction - Positive
+> -   Form - Linear
+> -   Strength - Medium; There are many observations below the linear regression, perhaps the relationship might vary by category?
+> -   Outliers - There is one serious outlier but probably not enough to strong influence the relationship.
+
+2.  Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
+
+```{r}
+#| label: tbl-q7b
+#| tbl-cap: "Total sales vs. carat weight outlier"
+
+outlier <- diamonds.recent.sales %>% 
+  filter(total_sales_price> 40000 & carat_weight<1) %>% 
+  select(c("id", "total_sales_price", "carat_weight", "color", "clarity", "symmetry", "polish"))
+
+kable(outlier,
+      col.names = c("ID", "Total sales price", "Carat weight", "Color", "Clarity", "Symmetry", "Polish")) 
+
+```
+
+> The outlier is the 216340th observation - nothing about any of the variable values looks like an obvious mistake. Additional investigation may be warranted to determine why this observation is an outlier. Without any other information, we should probably continue to include it in the dataset.
+
+3.  Does the relationship meaningfully change when colored by `cut_quality`?
+
+> The relationship meaningfully changes when colored by `cut_quality`. There is a flatter slope for very good cut diamonds, indicating that `carat_weight` has less of a relationship with price for lower quality cuts. 
+
+4.  What do you estimate the correlation for the first graph to be, without using technology?
+
+> I estimate the coorelation to be around 0.8.
+
+5.  Check the conditions for correlation
+
+> -   Quantitative variables condition: both are quantitative
+> -   Straight enough condition: the relationship is straight
+> -   No outliers condition: there is an outliers that might affect the correlation, though probably will not result in a big change in the estimate.
+
+6.  Find and interpret the correlation coefficient for this relationship
+
+```{r}
+#| label: q7c
+#| echo: true
+
+cor(diamonds.recent.sales$carat_weight, diamonds.recent.sales$total_sales_price)
+```
+
+> -   The correlation is ~0.88, that indicates a very strong relationship. Price and weight seem to be highly related..
+
+7.  When interpreting these two graphs, what can we learn about the relationship between these variables?
+
+> -   The `total_sales_price` is strongly positive linearly associated with the `carat_weight`, the relationship is stronger for unknown cuts and excellent cuts.
+
+## In conclusion
+
+### Q8: Putting it all together (10 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (which can be an additional graph, table, or calculation)**, write two to three paragraphs outlining what you think are the main findings of questions 1-7 and your additional graph, table, or calculation. What would you recommend to your boss as to what types of diamonds sell for the most money? What information are we missing in this dataset that we would need to better understand diamond price?
+
+
+> **Points of emphasis:**
+>
+> -   Analysis here can vary but must be at least two paragraphs
+> -   Should accurately summarize the information discovered by answering the previous questions
+> -   B-level answer will conduct a shallow additional analysis, A-level answer will show interesting additional analysis that builds on previous answers
+> -   Shows a good understanding of the limits of this dataset
+> -   Should be as precise as possible, don't use general statements when you can be more specific

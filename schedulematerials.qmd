@@ -117,7 +117,9 @@ Topics covered:
 
 -   Regression assumptions
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 2.2](https://andrewm.shinyapps.io/spr2023simpleregression)
+
+-   Lecture activity: [Lecture 2.2 activity](activities/Lecture 2.2/lecture2.2.activity.zip)
 
 ## Lab 2.1: Regression interpretation (Thursday, April 6)
 
