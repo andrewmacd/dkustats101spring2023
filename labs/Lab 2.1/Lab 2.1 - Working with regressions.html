@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Student">
+<meta name="dcterms.date" content="2023-04-06">
+
+<title>Lab 2.1 - Working with regressions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Lab 2.1 - Working with regressions_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lab 2.1 - Working with regressions_files/libs/quarto-html/quarto.js"></script>
+<script src="Lab 2.1 - Working with regressions_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lab 2.1 - Working with regressions_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Lab 2.1 - Working with regressions_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Lab 2.1 - Working with regressions_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lab 2.1 - Working with regressions_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Lab 2.1 - Working with regressions_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Lab 2.1 - Working with regressions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Lab 2.1 - Working with regressions_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 2.1 - Working with regressions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Student </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 6, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="regression-and-dplyr" class="level1">
+<h1>Regression and <code>dplyr</code></h1>
+<section id="running-regressions" class="level2">
+<h2 class="anchored" data-anchor-id="running-regressions">Running regressions</h2>
+<p>The non-<code>tidyverse</code> method of doing a regression (aka the base R way) is the example seen online in the following code:</p>
+<pre><code>reg=lm(Y~X1+X2+X3,data=dat)
+summary(reg)</code></pre>
+<p>In this example, <code>Y</code> is the response variable and the <code>Xn</code> variables are the predictor variables.</p>
+<p>The <code>summary()</code> command then provides the regression results, but it can be hard to work with to print or manipulate your results.</p>
+<p>In <code>dplyr</code>, there are ways to more helpfully produce your regression results. For this, we will need the <code>broom</code> library. You first need to create your regression the standard way as above.</p>
+<p>We can then tidy the results with the following command from the <code>broom</code> library:</p>
+<pre><code>mtReg &lt;- lm(mpg ~ hp, data=mtcars)
+
+tidy(mtReg)</code></pre>
+<p>This returns the regression results as a data frame.</p>
+<p>We can also view some of the regression diagnostics (don’t worry about any of the terms yet besides the <span class="math inline">\(r^2\)</span>)</p>
+<pre><code>glance(mtReg)</code></pre>
+<blockquote class="blockquote">
+<p>Create a regression using the <code>mtcars</code> dataset and a different predictor variable. Tidy the results and produce the model fit statistics, then interpret your results.</p>
+</blockquote>
+<ol type="1">
+<li>Based on simply the results, how good of a fit do you think your model is?</li>
+<li>For a one unit change in <span class="math inline">\(x\)</span>, how much change is there in <span class="math inline">\(y\)</span>? Do you estimate that to be a lot or a little?</li>
+<li>How can you interpret the intercept? Is the intercept meaningful?</li>
+</ol>
+</section>
+<section id="getting-the-residuals" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-residuals">Getting the residuals</h2>
+<p>To get the residuals from a dataset, we need to use the <code>augment()</code> command from the <code>broom</code> library.</p>
+<pre><code>mt.cars.resids &lt;- augment(mtReg, mtcars)</code></pre>
+<p>Notice that when you inspect this new, augmented dataset, it has a number of new data columns. The ones we are most interested in is the <code>.fitted</code> and the <code>.resid</code>.</p>
+<p>We can use the <code>.resid</code> column to make a histogram of the residuals.</p>
+<blockquote class="blockquote">
+<p>Make a histogram of your residuals</p>
+</blockquote>
+<ol type="1">
+<li>What are we hoping to see in a histogram of the residuals?</li>
+<li>What do you observe in your residual histogram? Are there any problems?</li>
+</ol>
+<p>We can also make a plot of the residuals vs.&nbsp;fitted values. This tells that for any given predicted value of <span class="math inline">\(y\)</span> (<span class="math inline">\(\hat{y}\)</span>) how much we ‘missed’ the prediction by. If there are systematic patterns in this graph, that indicates some possible non-linearity, outlier, or plot thickens condition in the relationship between your predictor variable(s) and response variable.</p>
+<blockquote class="blockquote">
+<p>Make a scatterplot of your residuals vs.&nbsp;predicted (predicted on <span class="math inline">\(x\)</span> axis). Draw a horizontal line at the <span class="math inline">\(0\)</span> value for the <span class="math inline">\(y\)</span> axis.</p>
+</blockquote>
+<ol type="1">
+<li>How does your plot look? Do you estimate that there are any problems?</li>
+<li>Interpret your overall model fit based on the residual plots</li>
+</ol>
+</section>
+<section id="nicely-printing-your-regression-results" class="level2">
+<h2 class="anchored" data-anchor-id="nicely-printing-your-regression-results">Nicely printing your regression results</h2>
+<p>You can use plain old <code>kable()</code> to make your regression table from the results of the <code>tidy()</code> command but we can do better than this simple table. There are many libraries that print out pretty version of a standard regression table. I particularly like the one called <code>modelsummary()</code> (details can be found <a href="https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html">here</a>).</p>
+<p>You can simply use it as follows:</p>
+<pre><code>library(modelsummary)
+library(kableExtra)
+
+modelsummary(mtReg)</code></pre>
+<p>You can add several models to one table as follows:</p>
+<pre><code>mtReg.cyl &lt;- lm(mpg~cyl, data=mtcars)
+
+models &lt;- list(
+  "Horsepower" = mtReg,
+  "Cylinders" = mtReg.cyl
+)
+
+modelsummary(models)</code></pre>
+<blockquote class="blockquote">
+<p>Create a nice table of your results. Rename the predictor variable in the table to something human readable (see the <code>coef_rename</code> section)</p>
+</blockquote>
+</section>
+</section>
+<section id="going-deeper" class="level1">
+<h1>Going deeper</h1>
+<p>Using the provided <code>china-aqi.csv</code> file,</p>
+<ol type="1">
+<li>Choose a predictor variable and a response variable</li>
+<li>Make a scatterplot of the relationship and add a smoother - do you feel the relationship is a good fit?</li>
+<li>Generate the regression results. Interpret your regression coefficients.</li>
+<li>Check the residuals - do they confirm your visual inspection from the scatterplot? Why or why not?</li>
+<li>Create a high-quality table based on your regression results using the <code>modelsummary()</code> command</li>
+</ol>
+<p>If you have time, do the same for another predictor variable and the same response variable and add the results to your <code>modelsummary()</code> table.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

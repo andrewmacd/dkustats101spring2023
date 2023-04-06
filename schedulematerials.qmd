@@ -121,9 +121,9 @@ Topics covered:
 
 -   Lecture activity: [Lecture 2.2 activity](activities/Lecture 2.2/lecture2.2.activity.zip)
 
-## Lab 2.1: Regression interpretation (Thursday, April 6)
+## Lab 2.1: Working with regressions (Thursday, April 6)
 
--   Lab files:
+-   Lab files: [Lab 2.1](labs/Lab 2.1/lab2.1.zip)
     -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Lecture 2.3: Regression Wisdom (Friday, April 7)
@@ -148,9 +148,9 @@ Topics covered:
 
 -   [Working with Dates and Times in R](https://www.datacamp.com/courses/working-with-dates-and-times-in-r)
 
-## Unit 2 homework - midterm project - progress check (due Sunday, April 9 at 11:59:00)
+## Unit 2 homework - midterm project - progress check (due Monday, April 10 at 11:59:00)
 
--   Homework files:
+-   Homework files: [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
 
 ## Lecture 2.4: Multiple Regression (Tuesday, April 11)
 
@@ -176,7 +176,7 @@ Topics covered:
 
 ## Unit 2 homework - midterm project (due Sunday, April 16 at 11:59:00)
 
--   Homework files:
+-   Homework files: [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
 
 # Unit 3: Measuring uncertainty
 

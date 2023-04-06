@@ -26,8 +26,8 @@ Imagine you are hired by a major video game firm that wants to increase the sale
 Specifically, the client asks you analyze a few specific things.
 
 1.  Consider what variables, if any, have changed over time. Think about the reasons that a factor you examine did or did not change over time.
-2.  Consider which genres tend to have the most popular video games
-2.  Create a regression model to consider what factors are most important in predicting user rating of a video game
+2.  Consider which genres tend to have the most played video games
+2.  Create a regression model to consider what factors are most important in predicting `Plays` of a video game
 3.  Consider what lurking variables you may be missing or might change your analysis if you had access to them.
 
 Finally, your client asks you to make a series of recommendations for the type of video game, that, based on the data, the firm should pursue for its next game.
@@ -65,7 +65,7 @@ However, both sections should be substantially complete - all code necessary to 
 
 ## Points of emphasis
 
--   Your job as an analyst is to write a report analyzing what factors you think lead to a high rating for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy. Advice on how to write a business report can be found [here](https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf).
+-   Your job as an analyst is to write a report analyzing what factors you think lead to a lot of plays for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy. Advice on how to write a business report can be found [here](https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf).
 
 -   You should transform the `Genres` variable into many categorical variables. You can do this by, for example:
 
@@ -78,7 +78,7 @@ video.games <- video.games %>%
 
 -   For the genre analysis, a simple table or bar/boxplot summarizing your findings would be sufficient. Think about which data display would be most meaningful and informative.
 
--   For the popularity model, you should limit your focus to one response variable and maximum 4-5 predictor variables that you think are most important in your analyses. You can consider multiple, related models if you wish - models that share most predictor variables but differ by one or two minor variables.
+-   For the played model, you should limit your focus to one response variable and maximum 4-5 predictor variables that you think are most important in your analyses. You can consider multiple, related models if you wish - models that share most predictor variables but differ by one or two minor variables.
 
 -   Whether a variable should be included in your model or not should be based on whether the variable is important in evaluating the client demand. You should cite a source or two so as to better help you develop some expectations and select the variables that you include in your analysis.
 
@@ -98,11 +98,11 @@ Consider how to display and discuss any significant trend you noticed across tim
 
 # Genre report
 
-Here you will report on which genres seem to have the most popular games. Think carefully about why this may be the case. Only one data display is necessary here but think carefully about which kind of display will best summarize your findings.
+Here you will report on which genres seem to have the most played games. Think carefully about why this may be the case. Only one data display is necessary here but think carefully about which kind of display will best summarize your findings.
 
 # Popularity model
 
-In this section you will fully develop a model of video game popularity. 
+In this section you will fully develop a model of the number of times a video game is played. 
 
 ## Summary data
 
