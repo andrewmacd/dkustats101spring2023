@@ -5,9 +5,9 @@ account: andrewm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8781559
-bundleId: 7057020
+bundleId: 7057702
 url: https://andrewm.shinyapps.io/spr2023regressionwisdom/
-when: 1680784954.62649
-lastSyncTime: 1680784954.6265
+when: 1680794476.94596
+lastSyncTime: 1680794476.94599
 asMultiple: FALSE
 asStatic: FALSE

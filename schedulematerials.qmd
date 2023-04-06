@@ -176,6 +176,10 @@ Topics covered:
 
 -   Lab files:
 
+## Online lab 2.3 (due on Friday, April 14 at 11:59:00)
+
+-   [Intermediate Data Visualization with ggplot2](https://app.datacamp.com/learn/courses/intermediate-data-visualization-with-ggplot2)
+
 ## Unit 2 homework - midterm project (due Sunday, April 16 at 11:59:00)
 
 -   Homework files: [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
