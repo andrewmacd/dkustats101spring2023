@@ -5,11 +5,11 @@ title: "Homework"
 # Unit 1 homework (due April 2nd at 11:59:00 pm)
 
 -   [Unit 1 homework instructions](homeworks/Homework 1/homework1.zip)
--   Unit 1 sample solutions
+-   [Unit 1 sample solutions](homeworks/Homework 1/homework1.solutions.zip)
 
 # Unit 2 homework - midterm project (due Sunday, April 16 at 11:59:00)
 
--   Unit 2 homework instructions
+-   [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
 -   Unit 2 homework scoring guide
 
 # Unit 3 homework (due Sunday, April 30 at 11:59:00)
