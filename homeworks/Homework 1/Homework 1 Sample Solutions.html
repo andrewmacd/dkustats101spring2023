@@ -187,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <blockquote class="blockquote">
 <ul>
-<li><em>Categorical variables</em> : <code>cut</code>, <code>color</code>, <code>clarity</code>, <code>cut_quality</code>, <code>symmetry</code>, <code>polish</code></li>
+<li><em>Categorical variables</em> : <code>cut</code>, <code>color</code></li>
+<li><em>Ordinal variables</em>: <code>clarity</code>, <code>cut_quality</code>, <code>symmetry</code>, <code>polish</code></li>
 <li><em>Identifiers</em> : <code>id</code></li>
 <li><em>Quantitative variables</em>: <code>total_sales_price</code>, <code>carat_weight</code>, <code>meas_length</code>, <code>meas_width</code>, <code>meas_depth</code>, <code>depth_percent</code></li>
 </ul>
@@ -1024,9 +1025,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Estimate the IQR of the diamond size and show your work for how you arrived at that estimate.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(diamonds.recent.sales<span class="sc">$</span>meas_depth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(diamonds.recent.sales<span class="sc">$</span>meas_depth, <span class="at">probs=</span><span class="fl">0.75</span>) <span class="sc">-</span> <span class="fu">quantile</span>(diamonds.recent.sales<span class="sc">$</span>meas_depth, <span class="at">probs=</span><span class="fl">0.25</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7425</code></pre>
+<pre><code>   75% 
+0.7425 </code></pre>
 </div>
 </div>
 <blockquote class="blockquote">

@@ -41,7 +41,8 @@ theme_set(theme_classic())
 
 -   Using the definitions in the textbook, describe the variable type for the following variables (you can review the variable definitions [here](https://www.kaggle.com/datasets/hrokrin/the-largest-diamond-dataset-currely-on-kaggle)):
 
-> -   *Categorical variables* : `cut`, `color`, `clarity`, `cut_quality`, `symmetry`, `polish`
+> -   *Categorical variables* : `cut`, `color` 
+> -   *Ordinal variables*: `clarity`, `cut_quality`, `symmetry`, `polish`
 > -   *Identifiers* : `id`
 > -   *Quantitative variables*: `total_sales_price`, `carat_weight`, `meas_length`, `meas_width`, `meas_depth`, `depth_percent`
 
@@ -384,7 +385,7 @@ mdepth.cum.dist(4) - mdepth.cum.dist(2)
 #| label: q6d
 #| echo: true
 
-IQR(diamonds.recent.sales$meas_depth)
+quantile(diamonds.recent.sales$meas_depth, probs=0.75) - quantile(diamonds.recent.sales$meas_depth, probs=0.25) 
 ```
 
 > The IQR is 0.7425.
