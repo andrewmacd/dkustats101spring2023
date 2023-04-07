@@ -444,7 +444,7 @@ ggplot(diamonds.recent.sales, aes(x=carat_weight, y=total_sales_price,color=cut_
   geom_smooth(method = "lm", se = FALSE) + 
   geom_text(data=diamonds.recent.sales[diamonds.recent.sales$carat_weight<1 &diamonds.recent.sales$total_sales_price> 40000,], 
             aes(label=id), size=3, vjust=2,color="red") +
-  labs(title="Scatter plot of total sales price vs carat weight", 
+  labs(title="Scatter plot of total sales price vs carat weight by cut quality", 
        x="Carat weight", y="Total sale prices")
 ```
 
@@ -502,6 +502,89 @@ cor(diamonds.recent.sales$carat_weight, diamonds.recent.sales$total_sales_price)
 7.  When interpreting these two graphs, what can we learn about the relationship between these variables?
 
 > -   The `total_sales_price` is strongly positive linearly associated with the `carat_weight`, the relationship is stronger for unknown cuts and excellent cuts.
+
+-   Make two scatterplots (side by side) of `carat_weight` as a function of `meas_width` and a second plot of the same relationship colored by `cut_quality`. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of `cut_quality`) and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `id`.
+
+```{r}
+#| label: fig-q7c
+#| fig-cap: 
+#|   - "Carat weight vs. measured width"
+#|   - "Carat weight vs. measured width by cut quality"
+#| layout-ncol: 2
+#| column: page
+
+ggplot(diamonds.recent.sales, aes(x=meas_width, y=carat_weight)) + geom_point(alpha = 0.5, position = "jitter")+
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_text(data=diamonds.recent.sales[diamonds.recent.sales$carat_weight>5,], 
+            aes(label=id), size=3, vjust=2,color="red") +
+  labs(title="Scatter plot of carat weight vs. measured width", 
+       x="Measured width", y="Carat weight")
+
+
+
+ggplot(diamonds.recent.sales, aes(x=meas_width, y=carat_weight, color=cut_quality)) + geom_point(alpha = 0.5, position = "jitter")+
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_text(data=diamonds.recent.sales[diamonds.recent.sales$carat_weight>5,], 
+            aes(label=id), size=3, vjust=2,color="red") +
+  labs(title="Scatter plot of carat weight vs. measured width by cut quality", 
+       x="Measured width", y="Carat weight")
+```
+
+1.  For the first graph, do you think there is a clear pattern? Describe the association between `carat_weight` and `meas_width`.
+
+> There appears to be a positive linear relationship.
+>
+> -   Direction - Positive
+> -   Form - Linear, though there appears to be two types or categories in the data, one less linear than the other
+> -   Strength - Medium to strong - there appear to be two types of patterns, one stronger than the other.
+> -   Outliers - There is one outlier but it appears to be on the line of best fit.
+
+2.  Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
+
+```{r}
+#| label: tbl-q7d
+#| tbl-cap: "Carat weight vs. measured width outlier"
+
+outlier <- diamonds.recent.sales %>% 
+  filter(carat_weight>5) %>% 
+  select(c("id", "total_sales_price", "carat_weight", "color", "clarity", "symmetry", "polish"))
+
+kable(outlier,
+      col.names = c("ID", "Total sales price", "Carat weight", "Color", "Clarity", "Symmetry", "Polish")) 
+
+```
+
+> The outlier is the 216202th observation - while the diamond is very large, it also sold for a lot of money and has very good characteristics. In short, there is nothing too surprising about the diamond other than its quality.
+
+3.  Does the relationship meaningfully change when colored by `cut_quality`?
+
+> The relationship meaningfully changes when colored by `cut_quality`. The previous categorical difference becomes clear. For diamonds of standard cuts, there is a very clear and strong, though not perfectly linear relationship. For diamonds of `unknown` cut quality, there is a relationship but it is weaker and has more noise. 
+
+4.  What do you estimate the correlation for the first graph to be, without using technology?
+
+> I estimate the coorelation to be around 0.8 again.
+
+5.  Check the conditions for correlation
+
+> -   Quantitative variables condition: both are quantitative
+> -   Straight enough condition: the relationship is straight enough
+> -   No outliers condition: there are no obvious outliers that should affect the correlation.
+
+6.  Find and interpret the correlation coefficient for this relationship
+
+```{r}
+#| label: q7e
+#| echo: true
+
+cor(diamonds.recent.sales$carat_weight, diamonds.recent.sales$meas_width)
+```
+
+> -   The correlation is ~0.87, that indicates a very strong relationship. Weight and width seem to be highly related, which isn't too surprising.
+
+7.  When interpreting these two graphs, what can we learn about the relationship between these variables?
+
+> -   That `carat_weight` is strongly positive linearly associated with `meas_width`, the relationship depends somewhat on the cut type - likely unknown cuts have somewhat irregular shapes compared to standard cuts. More investigation would be needed to confirm this finding.
+
 
 ## In conclusion
 

@@ -1201,6 +1201,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The <code>total_sales_price</code> is strongly positive linearly associated with the <code>carat_weight</code>, the relationship is stronger for unknown cuts and excellent cuts.</li>
 </ul>
 </blockquote>
+<ul>
+<li>Make two scatterplots (side by side) of <code>carat_weight</code> as a function of <code>meas_width</code> and a second plot of the same relationship colored by <code>cut_quality</code>. Add a linear smoother to both plots (in the second plot there should be a smoother for each level of <code>cut_quality</code>) and label any points you consider to be an outlier using <code>geom_text()</code> - the label for the outlier should print the observation’s <code>id</code>.</li>
+</ul>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-q7c-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Homework-1-Sample-Solutions_files/figure-html/fig-q7c-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Carat weight vs.&nbsp;measured width</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-q7c-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Homework-1-Sample-Solutions_files/figure-html/fig-q7c-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Carat weight vs.&nbsp;measured width by cut quality</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>For the first graph, do you think there is a clear pattern? Describe the association between <code>carat_weight</code> and <code>meas_width</code>.</li>
+</ol>
+<blockquote class="blockquote">
+<p>There appears to be a positive linear relationship.</p>
+<ul>
+<li>Direction - Positive</li>
+<li>Form - Linear, though there appears to be two types or categories in the data, one less linear than the other</li>
+<li>Strength - Medium to strong - there appear to be two types of patterns, one stronger than the other.</li>
+<li>Outliers - There is one outlier but it appears to be on the line of best fit.</li>
+</ul>
+</blockquote>
+<ol start="2" type="1">
+<li>Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-q7d" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;10: Carat weight vs.&nbsp;measured width outlier</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 25%">
+<col style="width: 18%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">ID</th>
+<th style="text-align: right;">Total sales price</th>
+<th style="text-align: right;">Carat weight</th>
+<th style="text-align: left;">Color</th>
+<th style="text-align: left;">Clarity</th>
+<th style="text-align: left;">Symmetry</th>
+<th style="text-align: left;">Polish</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">216202</td>
+<td style="text-align: right;">50611</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">SI2</td>
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: left;">Excellent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>The outlier is the 216202th observation - while the diamond is very large, it also sold for a lot of money and has very good characteristics. In short, there is nothing too surprising about the diamond other than its quality.</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Does the relationship meaningfully change when colored by <code>cut_quality</code>?</li>
+</ol>
+<blockquote class="blockquote">
+<p>The relationship meaningfully changes when colored by <code>cut_quality</code>. The previous categorical difference becomes clear. For diamonds of standard cuts, there is a very clear and strong, though not perfectly linear relationship. For diamonds of <code>unknown</code> cut quality, there is a relationship but it is weaker and has more noise.</p>
+</blockquote>
+<ol start="4" type="1">
+<li>What do you estimate the correlation for the first graph to be, without using technology?</li>
+</ol>
+<blockquote class="blockquote">
+<p>I estimate the coorelation to be around 0.8 again.</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Check the conditions for correlation</li>
+</ol>
+<blockquote class="blockquote">
+<ul>
+<li>Quantitative variables condition: both are quantitative</li>
+<li>Straight enough condition: the relationship is straight enough</li>
+<li>No outliers condition: there are no obvious outliers that should affect the correlation.</li>
+</ul>
+</blockquote>
+<ol start="6" type="1">
+<li>Find and interpret the correlation coefficient for this relationship</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(diamonds.recent.sales<span class="sc">$</span>carat_weight, diamonds.recent.sales<span class="sc">$</span>meas_width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8667866</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<ul>
+<li>The correlation is ~0.87, that indicates a very strong relationship. Weight and width seem to be highly related, which isn’t too surprising.</li>
+</ul>
+</blockquote>
+<ol start="7" type="1">
+<li>When interpreting these two graphs, what can we learn about the relationship between these variables?</li>
+</ol>
+<blockquote class="blockquote">
+<ul>
+<li>That <code>carat_weight</code> is strongly positive linearly associated with <code>meas_width</code>, the relationship depends somewhat on the cut type - likely unknown cuts have somewhat irregular shapes compared to standard cuts. More investigation would be needed to confirm this finding.</li>
+</ul>
+</blockquote>
 </section>
 </section>
 <section id="in-conclusion" class="level2">
