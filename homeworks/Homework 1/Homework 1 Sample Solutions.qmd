@@ -323,7 +323,7 @@ Another client of the firm, a ring maker, is interested in producing rings for t
 
 -   What features of `meas_depth` would change if we reexpressed the measured depth in inches instead of centimeters?
 
-> The specific values for measures of center and spread would change, but the data's relationship with each other would remain the same.
+> The specific values for measures of center and spread would change, but the data's shape and relationship with each other would remain the same.
 
 -   Would it be reasonable for the ring maker to introduce a ring that could accept diamonds with a depth of 4 cm to 2 cm? Explain.
 
