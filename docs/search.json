@@ -382,7 +382,7 @@
     "href": "schedulematerials.html#lecture-2.4-multiple-regression-tuesday-april-11",
     "title": "Course Schedule and Class Materials",
     "section": "Lecture 2.4: Multiple Regression (Tuesday, April 11)",
-    "text": "Lecture 2.4: Multiple Regression (Tuesday, April 11)\nReading to do before class: Chapter 9\n\nPreclass quiz due at 2:30 pm\n\nTopics covered:\n\nWhat is multiple regression?\nInterpreting multiple regression coefficients\nPartial regression plots\nIndicator variables\nLecture webpage:"
+    "text": "Lecture 2.4: Multiple Regression (Tuesday, April 11)\nReading to do before class: Chapter 9\n\nPreclass quiz due at 2:30 pm\n\nTopics covered:\n\nWhat is multiple regression?\nInterpreting multiple regression coefficients\nPartial regression plots\nIndicator variables\nLecture webpage: Lecture 2.4\nLecture activity: Lecture 2.4 activity"
   },
   {
     "objectID": "schedulematerials.html#lab-2.2-model-building-wednesday-april-12",
@@ -537,5 +537,12 @@
     "title": "Course Schedule and Class Materials",
     "section": "Online lab 2.3 (due on Friday, April 14 at 11:59:00)",
     "text": "Online lab 2.3 (due on Friday, April 14 at 11:59:00)\n\nIntermediate Data Visualization with ggplot2"
+  },
+  {
+    "objectID": "schedulematerials.html#lab-2.2-making-fancy-quarto-documents-wednesday-april-12",
+    "href": "schedulematerials.html#lab-2.2-making-fancy-quarto-documents-wednesday-april-12",
+    "title": "Course Schedule and Class Materials",
+    "section": "Lab 2.2: Making fancy Quarto documents (Wednesday, April 12)",
+    "text": "Lab 2.2: Making fancy Quarto documents (Wednesday, April 12)\n\nLab files:"
   }
 ]

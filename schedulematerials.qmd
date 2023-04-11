@@ -170,9 +170,11 @@ Topics covered:
 
 -   Indicator variables
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 2.4](https://andrewm.shinyapps.io/spr2023multipleregression)
 
-## Lab 2.2: Model building (Wednesday, April 12)
+-   Lecture activity: [Lecture 2.4 activity](activities/Lecture 2.4/lecture2.4.activity.zip)
+
+## Lab 2.2: Making fancy Quarto documents (Wednesday, April 12)
 
 -   Lab files:
 
