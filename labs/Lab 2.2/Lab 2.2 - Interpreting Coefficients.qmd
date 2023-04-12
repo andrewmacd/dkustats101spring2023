@@ -1,0 +1,63 @@
+---
+title: "Lab 2.2 - Interpreting Coefficients"
+author: "Student"
+date: "4/12/2023"
+output:
+  html_document:
+    toc: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Load your dataset and place your libraries here
+```
+
+![](washdcbike.jpg){width="800"}
+
+# Creating a multivariate model
+
+For this assignment, we will be using data from the Washington D.C. bicycle sharing system. In particular, we want to try and create a model of the `cnt` of all bicycles rented per day.
+
+> You should make a model that includes `cnt` as the response variable and at least 2 quantitative variables as predictor variables. You can find the variable definitions [here](https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset).
+
+## Forming expectations
+
+1.  Before starting, write a sentence or two on your expectation of the direction and strength of the relationship between each of the predictor variables and the response variable
+
+## Checking model fit
+
+2.  Check the model fit via the `summary()` command information - does your model fit seem reasonable? Why or why not?
+
+3.  Make a histogram of your residuals and a scatterplot of the residuals vs. fitted (or predicted). What does this indicate about your model fit? Does this seem like an appropriate model?
+
+## Revising the model
+
+4.  If the model does not appear to be a good fit, then revise it as best you can. If you have reached 30 min after lab started, go ahead and move on with whatever model you have so you will have time to complete the second half of the lab.
+
+# Interpreting the coefficients
+
+## Before we begin
+
+1.  First, identify what are the units of the predictor and response variables?
+
+2.  Second, make a table and identify what are reasonable values for the predictor variables. The table should include information about the 5 number summary for each.
+
+3.  For what range(s) of our predictor and response variable(s) would our best fit line have meaning and when would it not? Can you think of any cases or examples of observation types that this model would not predict well?
+
+## Interpreting the coefficients
+
+3.  Interpret the intercept. Does it have meaning in this case?
+
+4.  Interpret a one-unit change in each of the predictor variables on the response variable. Do you think this is a lot or a little? Why?
+
+5.  Make a table and solve for the predicted value ($\hat{y}$) of the response variable at Q1 and Q3 of each of the predictor variables, holding the other predictor variable(s) at their mean.
+
+6.  Does a change from the Q1 value to the Q3 of the predictor variable result in a large change (in your opinion) in the predicted value ($\hat{y}$) of the response variable?
+
+## Making a decision
+
+7.  Decide whether each of your predictor variables has a substantively significant relationship with the response variable.
+
+8.  If you have time, go back and try a more advanced model and repeat the above steps.

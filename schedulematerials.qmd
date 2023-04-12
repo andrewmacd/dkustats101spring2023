@@ -174,9 +174,10 @@ Topics covered:
 
 -   Lecture activity: [Lecture 2.4 activity](activities/Lecture 2.4/lecture2.4.activity.zip)
 
-## Lab 2.2: Making fancy Quarto documents (Wednesday, April 12)
+## Lab 2.2: Interpreting Coefficients (Wednesday, April 12)
 
--   Lab files:
+-   Lab files: [Lab 2.2](labs/Lab 2.2/lab2.2.zip)
+    -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Online lab 2.3 (due on Friday, April 14 at 11:59:00)
 
