@@ -27,8 +27,8 @@ Specifically, the client asks you analyze a few specific things.
 
 1.  Consider what variables, if any, have changed over time. Think about the reasons that a factor you examine did or did not change over time.
 2.  Consider which genres tend to have the most played video games
-2.  Create a regression model to consider what factors are most important in predicting `Plays` of a video game
-3.  Consider what lurking variables you may be missing or might change your analysis if you had access to them.
+3.  Create a regression model to consider what factors are most important in predicting `Plays` of a video game
+4.  Consider what lurking variables you may be missing or might change your analysis if you had access to them.
 
 Finally, your client asks you to make a series of recommendations for the type of video game, that, based on the data, the firm should pursue for its next game.
 
@@ -39,7 +39,7 @@ Finally, your client asks you to make a series of recommendations for the type o
 -   Delete the `Assignment instructions`, `Task`, `Specific requirements` and `Points of emphases` sections
 -   Final report should be minimum 1500 words
     -   Maximum 8 graphs
-      -   Graphs can be combined and only counted as one as long as they are the same type - a combined plot of histograms of predictor variables, for example
+    -   Graphs can be combined and only counted as one as long as they are the same type - a combined plot of histograms of predictor variables, for example
     -   Maximum 4 tables
 -   Suggested structure:
     -   Introduction & literature review
@@ -65,11 +65,19 @@ However, both sections should be substantially complete - all code necessary to 
 
 ## Points of emphasis
 
--   Your job as an analyst is to write a report analyzing what factors you think lead to a lot of plays for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy. Advice on how to write a business report can be found [here](https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf).
+### Format
+
+-   Your job as an analyst is to write a report analyzing what factors you think lead to a lot of plays for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy.
+
+This document is not a formal essay. Some of the differences between a bussiness report and a formal essay are summarized in the table below (this table and more advice on writing business reports can be found [here](https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf)):
+
+![](businessreport.png){width="800"}
+
+### Substance
 
 -   You should transform the `Genres` variable into many categorical variables. You can do this by, for example:
 
-```
+```         
 video.games <- video.games %>% 
   mutate(adventure = ifelse(grepl("Adventure", Genres), "yes", "no"))
 ```
@@ -102,7 +110,7 @@ Here you will report on which genres seem to have the most played games. Think c
 
 # Popularity model
 
-In this section you will fully develop a model of the number of times a video game is played. 
+In this section you will fully develop a model of the number of times a video game is played.
 
 ## Summary data
 
@@ -118,7 +126,7 @@ Check to see how well your model fits the data here.
 
 ## Interpreting coefficients
 
-Interpret the magnitude of your coefficients here. 
+Interpret the magnitude of your coefficients here.
 
 # Conclusion
 

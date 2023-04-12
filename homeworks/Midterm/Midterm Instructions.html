@@ -127,9 +127,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="points-of-emphasis" class="level2">
 <h2 class="anchored" data-anchor-id="points-of-emphasis">Points of emphasis</h2>
+<section id="format" class="level3">
+<h3 class="anchored" data-anchor-id="format">Format</h3>
 <ul>
-<li><p>Your job as an analyst is to write a report analyzing what factors you think lead to a lot of plays for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy. Advice on how to write a business report can be found <a href="https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf">here</a>.</p></li>
-<li><p>You should transform the <code>Genres</code> variable into many categorical variables. You can do this by, for example:</p></li>
+<li>Your job as an analyst is to write a report analyzing what factors you think lead to a lot of plays for a video game. The report should be a polished document you are proud to present to a client. The writing should be business professional, the document neat and tidy.</li>
+</ul>
+<p>This document is not a formal essay. Some of the differences between a bussiness report and a formal essay are summarized in the table below (this table and more advice on writing business reports can be found <a href="https://library.unimelb.edu.au/__data/assets/pdf_file/0005/1924160/Business_Reports.pdf">here</a>):</p>
+<p><img src="businessreport.png" class="img-fluid" width="800"></p>
+</section>
+<section id="substance" class="level3">
+<h3 class="anchored" data-anchor-id="substance">Substance</h3>
+<ul>
+<li>You should transform the <code>Genres</code> variable into many categorical variables. You can do this by, for example:</li>
 </ul>
 <pre><code>video.games &lt;- video.games %&gt;% 
   mutate(adventure = ifelse(grepl("Adventure", Genres), "yes", "no"))</code></pre>
@@ -142,6 +151,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You should focus your graphs and tables on that illustrating the most important information for drawing your conclusion. Choose your tables carefully such that they convey the key information needed to arrive at your conclusion. Do not make tables and graphs of irrelevant information or points that do not need discussing. Multiple graphs of the same type (for example, distribution plots) can be combined using the <code>gridExtra</code> package, but unrelated plots should be listed separately.</p></li>
 <li><p>Make sure to also interpret the coefficients. You need to interpret the impact of a one unit change in the predictor variable on the response variable. You additionally need to examine whether changes in the predictor variables lead to a substantively large or small change in the predictor variable. One way to do this is examining whether changing the predictor variable from its Q1 to Q3 value leads to a large or small change in the response variable. You may want to make a table with this information.</p></li>
 </ul>
+</section>
 </section>
 </section>
 <section id="introduction-and-literature-review" class="level1">
