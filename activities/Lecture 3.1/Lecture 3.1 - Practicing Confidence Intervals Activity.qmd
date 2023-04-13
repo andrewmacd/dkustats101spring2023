@@ -1,0 +1,90 @@
+---
+title: "Lecture 3.1 - Practicing Confidence Intervals"
+author: "Student"
+date: "4/13/2023"
+output:
+  html_document:
+    toc: true
+---
+
+![](Titanic.jpg){width="800"}
+
+```{r}
+#| label: setup
+#| include: false
+
+# Add any libraries and load your dataset here
+```
+
+# Interpretation steps
+
+Let's return to the `titanic_survival.csv` dataset.
+
+## Setting things up
+
+1.  Create new variable called `survivedindicator`; assign it a value of 0 if the passenger did not survive and 1 if the passenger did survive (information on how to do that can be found [here](https://www.anyamemensah.com/blog/recoding). Find the proportion that survived in the entire dataset.
+
+2.  Calculate by hand the standard deviation and confidence interval for `survivedindicator` of a sample of 50 and 200 based on the standard deviation of `survivedindicator` in the full dataset.
+
+3.  Interpret these confidence intervals
+
+## Random matters
+
+Now let's sample some of the cases in the dataset. We can sample whether or not they survived by typing:
+
+`titanic_draws_50 <- sample(titanic_survival$survivedindicator, 50, replace=TRUE)`
+
+4.  Find the proportion that survived of the sample of 50 and 200 and compare it to your expected value -- was it inside or outside the standard error? Why was it inside or outside?
+
+5.  If you sampled many times, how many sample proportions would be inside or outside of your confidence interval?
+
+# Sampling distributions
+
+Let's now add the following command to the `setup` block (copy and paste the entire part and then run your `setup` code block:
+
+```         
+prop.multiple.samples <- function(n, numsamples, variable) { 
+     meanvector <- c() 
+     meanonesample <- 0 
+     for (i in 1:numsamples) { 
+       meanonesample <- mean(sample(variable, n, replace=TRUE)) 
+         meanvector[i] <- meanonesample 
+     } 
+     meanvector 
+}
+```
+
+This defines a new function in R called `prop.multiple.samples()`. It takes as its arguments the sample size (`n`), the number of samples (`numsamples`) and the variable from which you would like to create a sampling distribution. Once you have created this function, you can use it as follows:
+
+```         
+titanic_50_100 <-mean.multiple.samples(50, 100, titanic_survival$survivedindicator)
+```
+
+This takes 100 samples of size 50 from the variable `titanic_survival$survivedindicator`. In practical terms, this line of code draws 50 people at random from the dataset 100 times and then calculate the proportion in each sample of the number of people surviving.
+
+## Observing the distribution
+
+1.  Make a histogram using ggplot of your mean calculations for many different `n` and sample combinations. Start small with both (maybe 20, 20) and increase `n` first (50, 100, 500, etc.) and then the set `n` to a fixed number (say, 50) and increase the number of samples (50, 100, 500, etc.).
+
+2.  Make some notes about how the histogram of means changes when you change draws and samples.
+
+-   How does the shape of the calculated proportions change as you increase the number of samples? Why do you think it does that? Try to relate it back to the formula for the confidence interval of a proportion.
+-   How does the shape of the calculated proportions change by increasing the number of draws? Why do you think it does that?
+
+3.  Also make some notes about how the shape of the sampling distribution changes over time.
+
+-   How large does number of draws have to be for the distribution of proportions to converge to normal?
+-   How large does the number of samples have to be for the distribution of proportions to converge to normal?
+
+## Comparing the distribution
+
+Now let's return to a distribution with an `n` of 50 and a sample of 100.
+
+4.  Calculate the proportion and standard deviation of your 50x100 distribution sample
+
+-   Is the sampling distribution proportion mean you found close to the true proportion? Why or why not?
+-   What is the standard deviation of the sampling distribution? How does this compare to the answer you obtained in the first section in question 2?
+
+# Extra activity - modeling
+
+While it is more common to use a more advanced regression form (logistic regression) to model an outcome variable with a 0 or 1 outcome, in this case please try to use linear regression make a model that predicts what factors are most important in predicting survival on the Titanic.

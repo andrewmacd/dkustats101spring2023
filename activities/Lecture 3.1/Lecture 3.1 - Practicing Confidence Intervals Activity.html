@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Student">
+<meta name="dcterms.date" content="2023-04-13">
+
+<title>Lecture 3.1 - Practicing Confidence Intervals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/quarto.js"></script>
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Lecture 3.1 - Practicing Confidence Intervals Activity_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 3.1 - Practicing Confidence Intervals</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Student </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 13, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><img src="Titanic.jpg" class="img-fluid" width="800"></p>
+<section id="interpretation-steps" class="level1">
+<h1>Interpretation steps</h1>
+<p>Let’s return to the <code>titanic_survival.csv</code> dataset.</p>
+<section id="setting-things-up" class="level2">
+<h2 class="anchored" data-anchor-id="setting-things-up">Setting things up</h2>
+<ol type="1">
+<li><p>Create new variable called <code>survivedindicator</code>; assign it a value of 0 if the passenger did not survive and 1 if the passenger did survive (information on how to do that can be found <a href="https://www.anyamemensah.com/blog/recoding">here</a>. Find the proportion that survived in the entire dataset.</p></li>
+<li><p>Calculate by hand the standard deviation and confidence interval for <code>survivedindicator</code> of a sample of 50 and 200 based on the standard deviation of <code>survivedindicator</code> in the full dataset.</p></li>
+<li><p>Interpret these confidence intervals</p></li>
+</ol>
+</section>
+<section id="random-matters" class="level2">
+<h2 class="anchored" data-anchor-id="random-matters">Random matters</h2>
+<p>Now let’s sample some of the cases in the dataset. We can sample whether or not they survived by typing:</p>
+<p><code>titanic_draws_50 &lt;- sample(titanic_survival$survivedindicator, 50, replace=TRUE)</code></p>
+<ol start="4" type="1">
+<li><p>Find the proportion that survived of the sample of 50 and 200 and compare it to your expected value – was it inside or outside the standard error? Why was it inside or outside?</p></li>
+<li><p>If you sampled many times, how many sample proportions would be inside or outside of your confidence interval?</p></li>
+</ol>
+</section>
+</section>
+<section id="sampling-distributions" class="level1">
+<h1>Sampling distributions</h1>
+<p>Let’s now add the following command to the <code>setup</code> block (copy and paste the entire part and then run your <code>setup</code> code block:</p>
+<pre><code>prop.multiple.samples &lt;- function(n, numsamples, variable) { 
+     meanvector &lt;- c() 
+     meanonesample &lt;- 0 
+     for (i in 1:numsamples) { 
+       meanonesample &lt;- mean(sample(variable, n, replace=TRUE)) 
+         meanvector[i] &lt;- meanonesample 
+     } 
+     meanvector 
+}</code></pre>
+<p>This defines a new function in R called <code>prop.multiple.samples()</code>. It takes as its arguments the sample size (<code>n</code>), the number of samples (<code>numsamples</code>) and the variable from which you would like to create a sampling distribution. Once you have created this function, you can use it as follows:</p>
+<pre><code>titanic_50_100 &lt;-mean.multiple.samples(50, 100, titanic_survival$survivedindicator)</code></pre>
+<p>This takes 100 samples of size 50 from the variable <code>titanic_survival$survivedindicator</code>. In practical terms, this line of code draws 50 people at random from the dataset 100 times and then calculate the proportion in each sample of the number of people surviving.</p>
+<section id="observing-the-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="observing-the-distribution">Observing the distribution</h2>
+<ol type="1">
+<li><p>Make a histogram using ggplot of your mean calculations for many different <code>n</code> and sample combinations. Start small with both (maybe 20, 20) and increase <code>n</code> first (50, 100, 500, etc.) and then the set <code>n</code> to a fixed number (say, 50) and increase the number of samples (50, 100, 500, etc.).</p></li>
+<li><p>Make some notes about how the histogram of means changes when you change draws and samples.</p></li>
+</ol>
+<ul>
+<li>How does the shape of the calculated proportions change as you increase the number of samples? Why do you think it does that? Try to relate it back to the formula for the confidence interval of a proportion.</li>
+<li>How does the shape of the calculated proportions change by increasing the number of draws? Why do you think it does that?</li>
+</ul>
+<ol start="3" type="1">
+<li>Also make some notes about how the shape of the sampling distribution changes over time.</li>
+</ol>
+<ul>
+<li>How large does number of draws have to be for the distribution of proportions to converge to normal?</li>
+<li>How large does the number of samples have to be for the distribution of proportions to converge to normal?</li>
+</ul>
+</section>
+<section id="comparing-the-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-distribution">Comparing the distribution</h2>
+<p>Now let’s return to a distribution with an <code>n</code> of 50 and a sample of 100.</p>
+<ol start="4" type="1">
+<li>Calculate the proportion and standard deviation of your 50x100 distribution sample</li>
+</ol>
+<ul>
+<li>Is the sampling distribution proportion mean you found close to the true proportion? Why or why not?</li>
+<li>What is the standard deviation of the sampling distribution? How does this compare to the answer you obtained in the first section in question 2?</li>
+</ul>
+</section>
+</section>
+<section id="extra-activity---modeling" class="level1">
+<h1>Extra activity - modeling</h1>
+<p>While it is more common to use a more advanced regression form (logistic regression) to model an outcome variable with a 0 or 1 outcome, in this case please try to use linear regression make a model that predicts what factors are most important in predicting survival on the Titanic.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
