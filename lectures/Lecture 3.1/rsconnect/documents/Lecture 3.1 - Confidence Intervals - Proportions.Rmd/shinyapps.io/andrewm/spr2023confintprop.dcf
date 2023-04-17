@@ -5,9 +5,9 @@ account: andrewm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8838266
-bundleId: 7083046
+bundleId: 7083414
 url: https://andrewm.shinyapps.io/spr2023confintprop/
-when: 1681358230.64753
-lastSyncTime: 1681358230.64754
+when: 1681367284.77746
+lastSyncTime: 1681367284.77747
 asMultiple: FALSE
 asStatic: FALSE

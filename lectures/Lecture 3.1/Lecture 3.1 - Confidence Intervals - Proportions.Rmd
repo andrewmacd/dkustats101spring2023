@@ -321,7 +321,7 @@ p
   + $2\times`r sqrt(p*p/100)`$
   + $`r p`\pm`r 2*sqrt(p*p/100)`$
 
-Statement: we are ~95% confident that this interval contains the true proportion of houses with three bedrooms in the population
+Statement: we are ~95% confident that this interval contains the true proportion of houses with three or more bedrooms in the population
 
 ### Critical values
 
@@ -353,23 +353,23 @@ qnorm(c(0.025, 0.975))
 
 ### What you cannot say about $p$ from the sample
 
-1. "`r p` of all houses in King County have three bedrooms." 
+1. "`r p` of all houses in King County have at least three bedrooms." 
   + No. Observations vary. Another sample would yield a different sample proportion.
 
-2. "It is probably true that `r p` of all houses in King County have three bedrooms." 
+2. "It is probably true that `r p` of all houses in King County have at least three bedrooms." 
   + No again. In fact, even if we didn’t know the true proportion, we’d know that it’s probably not `r p`.
 
 ### What you cannot say about $p$ from the sample
 
-3. "We don’t know exactly what proportion of houses in King County have three bedrooms, but we know that it’s within the interval $`r p`\pm2\times`r sqrt(p*p/100)`$.”   
+3. "We don’t know exactly what proportion of houses in King County have at least three bedrooms, but we know that it’s within the interval $`r p`\pm2\times`r sqrt(p*p/100)`$.”   
   + No but getting closer. We don't know this for sure. 
   
-4. "We don’t know exactly what proportion of houses in King County have three bedrooms, but the interval from `r round((p-(2*sqrt(p*p/100))), digits=3)` to `r round((p+(2*sqrt(p*p/100))), digits=3)` probably contains the true proportion."
+4. "We don’t know exactly what proportion of houses in King County have at least three bedrooms, but the interval from `r round((p-(2*sqrt(p*p/100))), digits=3)` to `r round((p+(2*sqrt(p*p/100))), digits=3)` probably contains the true proportion."
   + Right but can be more precise. We should specify how confident we are not just say *probably*
   
 ### What you can say about $p$ from the sample
 
-5. "We are 95% confident that between `r round((p-(2*sqrt(p*p/100))), digits=3)` and `r round((p+(2*sqrt(p*p/100))), digits=3)` of houses in King County have three bedrooms." 
+5. "We are 95% confident that between `r round((p-(2*sqrt(p*p/100))), digits=3)` and `r round((p+(2*sqrt(p*p/100))), digits=3)` of houses in King County have at least three bedrooms." 
   + Statements like these are called confidence intervals. They’re the best we can do.
 
 ### Naming the confidence interval
