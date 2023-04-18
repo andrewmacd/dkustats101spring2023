@@ -73,7 +73,7 @@ Topics covered:
 -   Lab files: [Lab 1.2](labs/Lab 1.2/lab1.2.zip)
     -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
-## Unit 1 homework (due April 2nd at 11:59:00 pm)
+## Unit 1 homework (due April 2nd at 23:59:00 pm)
 
 -   Homework files: [Unit 1 homework instructions](homeworks/Homework 1/homework1.zip)
 
@@ -97,7 +97,7 @@ Topics covered:
 
 -   Lecture activity: [Lecture 2.1 activity](activities/Lecture 2.1/lecture2.1.activity.zip)
 
-## Online lab 2.1 (due on Friday, March 31 at 11:59:00)
+## Online lab 2.1 (due on Friday, March 31 at 23:59:00)
 
 -   [Introduction to Data Visualization with ggplot2](https://learn.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
 
@@ -146,11 +146,11 @@ Topics covered:
 
 -   Lecture activity: [Lecture 2.3 activity](activities/Lecture 2.3/lecture2.3.activity.zip)
 
-## Online lab 2.2 (due on Friday, April 7 at 11:59:00)
+## Online lab 2.2 (due on Friday, April 7 at 23:59:00)
 
 -   [Working with Dates and Times in R](https://www.datacamp.com/courses/working-with-dates-and-times-in-r)
 
-## Unit 2 homework - midterm project - progress check (due Monday, April 10 at 11:59:00)
+## Unit 2 homework - midterm project - progress check (due Monday, April 10 at 23:59:00)
 
 -   Homework files: [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
 
@@ -213,7 +213,7 @@ Topics covered:
 
 Reading to do before class: Chapter 14
 
-> Preclass quiz due at 7:00 pm China time
+> Preclass quiz due at 2:30 pm China time
 
 Topics covered:
 
@@ -233,7 +233,7 @@ Topics covered:
 
 -   Lab files:
 
-### Lecture 3.3: Hypothesis testing (Thursday, April 20)
+## Lecture 3.3: Hypothesis testing (Thursday, April 20)
 
 Reading to do before class: Chapter 15
 
@@ -249,10 +249,6 @@ Topics covered:
 
 -   Lecture webpage:
 
-## Unit 3 homework - progress check (due Sunday, April 23 at 11:59:00)
-
--   Homework files:
-
 ## Lecture 3.4: Hypothesis testing wisdom (Tuesday, April 25)
 
 -   Lecture webpage:
@@ -261,7 +257,7 @@ Topics covered:
 
 -   Lab files:
 
-## Unit 3 homework (due Sunday, April 30 at 11:59:00)
+## Unit 3 homework - progress check (due Wednesday, April 26 at 23:59:00)
 
 -   Homework files:
 
@@ -284,6 +280,10 @@ Topics covered:
 -   Two-sample $t$ test
 
 -   Lecture webpage:
+
+## Unit 3 homework (due Sunday, May 7 at 23:59:00)
+
+-   Homework files:
 
 ## Lecture 4.2: Returning to regression (Tuesday, May 9)
 
@@ -317,10 +317,10 @@ Topics covered:
 
 -   Lecture activity:
 
-## Unit 4 homework - paper analysis (due Sunday, May 14 at 11:59:00 pm)
+## Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)
 
 -   Homework files:
 
-## Final project (due Thursday, May 18 at 11:59:00 pm)
+## Final project (due Thursday, May 18 at 23:59:00)
 
 -   Homework files:
