@@ -4,12 +4,12 @@ title: "Homework"
 
 # Unit 1 homework (due April 2nd at 23:59:00)
 
--   [Unit 1 homework instructions](homeworks/Homework 1/homework1.zip)
--   [Unit 1 sample solutions](homeworks/Homework 1/homework1.solutions.zip)
+-   [Unit 1 homework instructions](homeworks/Unit 1 Homework/homework1.zip)
+-   [Unit 1 sample solutions](homeworks/Unit 1 Homework/homework1.solutions.zip)
 
 # Unit 2 homework - midterm project (due Sunday, April 16 at 23:59:00)
 
--   [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
+-   [Unit 2 homework instructions](homeworks/Unit 2 Homework - Midterm/midterm.zip)
 
 # Unit 3 homework (due Sunday, May 7 at 23:59:00)
 
