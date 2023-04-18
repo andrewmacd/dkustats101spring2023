@@ -10,7 +10,6 @@ title: "Homework"
 # Unit 2 homework - midterm project (due Sunday, April 16 at 23:59:00)
 
 -   [Unit 2 homework instructions](homeworks/Midterm/midterm.zip)
--   Unit 2 homework scoring guide
 
 # Unit 3 homework (due Sunday, May 7 at 23:59:00)
 
