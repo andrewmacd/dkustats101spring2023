@@ -1,0 +1,182 @@
+---
+title: "Unit 3 Homework Instructions"
+author: "Anonymous"
+date: "4/16/2023"
+output:
+  html_document:
+    toc: true
+subtitle: DKU Stats 101 Spring 2023
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# put any setup code here
+```
+
+![Springfield's famous Mattoon Street[^1]](photos/mattoon-street.jpg){width="800"}
+
+[^1]: Photo courtesy of Springfield Museums
+
+# Assignment Background
+
+You are a Springfield, Massachusetts area used car salesperson (denoted in the dataset by the region `western massachusetts`) and have been tasked by your boss to write a report on the state of the local used care market. You will also be tasked to consider whether the used car market is in any way unique compared to the rest of the country and compared to the nearby city of Boston. To help analyze this question, your boss provides you with a database of all cars listed on a popular used car website, Craigslist, during the year 2021. You can consider this total database to provide accurate population estimates.
+
+Note that many of the columns require some recoding, either to remove junk values, properly code missing values, or to collapse the values in a column into a simple two category definition. I have already converted the column manufacturer into `origin`, recoding `manufacturer` based on whether the car was sold by an American company or a foreign company.
+
+The columns are:
+
+-   `city`: city where the car was listed for sale
+-   `price`: selling price
+-   `year`: the model year of the car
+-   `manufacturer`: what car company made the car
+-   `origin`: whether the car company that made the car was a U.S. company or not
+-   `make`: name of car
+-   `condition`: how good of a condition the car is in according to the seller
+-   `cylinders`: how many cylinders a car has
+-   `fuel`: what type of fuel the car needs
+-   `odometer`: how many miles the car has been driven
+-   `title_status`: whether or not the car has ever been in an accident -- if it has not been in an accident the car's title lists the car as clean
+-   `transmission`: what type of drivetrain the car has
+-   `drive`: whether the car is front wheel drive, rear wheel drive, four wheel drive or some other type
+-   `size`: what category of size the car is in
+-   `type`: body type of the car
+-   `paint_color`: color of the car
+
+The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data)
+
+# Assignment Instructions
+
+-   Save this document as a new document (Save As...) and rename it `Unit 3 Homework Answers`.
+-   Delete the Assignment Background and Assignment Instructions sections.
+-   If I say "Interpret..." that means I want at least 1-2 good quality sentences that show that you really understand the output of what R has produced. Short, incomplete sentences that fail to demonstrate you understand your output will have points deducted.
+-   Remember to appropriately label all of your graphs, construct easy to read tables, and nicely format your document. While the homework isn't a published document, it is the final product of exploratory data analysis so should be written as if you are presenting it to someone not familiar with the dataset.
+
+# Part 1: Must submit for checking by Tuesday, February 22nd at 11:59 pm
+
+## Q1: Literature review (5 points)
+
+Find a couple of news articles online that discuss which features of a used car are most associated with price. Based on these articles, what should we expect to find in this dataset and why? Make a bulleted list below with three specific expectations according to the data we have in our dataset.
+
+## Q2: Missing data (10 points)
+
+### Q2a. Exploring missingness
+
+Explore the key columns of `price`, `origin`, `odometer`, `year`, and `type`. Analyze what values you think should be missing and recode those as missing. Explain your logic. Then make a table that illustrates the amount of missing data in your dataset.
+
+### Q2b. Thinking about missingness
+
+Do you think your data is MAR, MCAR, or NMAR? What leads you to think that? In what ways could the pattern of missingness in the dataset influence our confidence interval and hypothesis test estimates in the following sections?
+
+![McKnight District in Springfield[^2]](photos/nels.jpeg){width="800"}
+
+[^2]: Photo courtesy of Nels J. Frye
+
+## Q3: Confidence intervals (20 points)
+
+You, as a researcher, are interested in the general conditions for used cars in the Springfield, Massachusetts market. For questions Q3-Q5, consider your Springfield subset to be your sample.
+
+### Q3a: Proportion of domestic cars
+
+-   Find the 95% confidence interval of the proportion of cars sold in Springfield that are domestic (American) cars - calculate this by hand and show your work
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   What sample size would you need to say with 95% confidence that true proportion of domestic cars sold lies within a plus/minus 0.04 range?
+-   In this case, what is the sampling frame?
+
+### Q3b: Price
+
+-   Make a histogram of the price of cars from your Springfield subset - what does this histogram indicate about the suitability of the data for making a confidence interval?
+-   Find the 90% confidence interval of price of cars from Springfield - calculate this by hand and show your work
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   How much larger would $n$ have to be to decrease by a factor of four the size of your confidence interval?
+
+### Q3c: Bootstrapping a confidence interval
+
+-   Using the existing data, create a 90% bootstrapped confidence interval for the price of used cars in Springfield and show the code you used to create the bootstrapped confidence interval
+-   Compare the results of the bootstrapped confidence interval (with 100000 samples) to the confidence interval you calculated by hand in Q3b - why were your results similar to or different than what you achieved by hand?
+-   Generally speaking, when would using the bootstrap method be helpful? When would the regular confidence interval be more useful?
+
+# Part 2: Finish by assigment deadline on Sunday, May 7 at 23:59
+
+## Q4: Hypothesis testing (25 points)
+
+![Nightlife in Springfield[^3]](photos/springfield-nightlife.jpeg){width="800"}
+
+[^3]: Photo courtesy of Nels J. Frye
+
+Now let's turn to comparing Springfield to some hypotheses. Again treat your Springfield subgroup as your sample.
+
+### Q4a Proportion of regular cars
+
+According to a [recent study](), the percentage of cars sold nationally that are standard cars (not SUVs, pickups, vans, or minivans) has been declining for some time and now stands at x%
+
+-   Write a specific hypothesis, fully specified, as to whether the proportion of regular cars sold in Springfield are different than the national average.
+-   What do you think is a reasonable critical value to select in this case? Choose your own critical value for your hypotheses tests.
+-   In this case should you use a one-sided test or two-sided test?
+-   Does this test pass the conditions for a hypothesis test?
+-   Find the $p$ value for the difference and interpret it with respect to your hypothesis test.
+-   What are some possible lurking variables that might make our conclusion unreliable?
+
+### Q4b Average odometer reading
+
+According to another recent study, the average odometer reading in the US is about xx,xxx.
+
+-   If we observe that the average odometer reading of cars sold in Springfield is higher than the national average at $p$=0.06, should we reject the null hypothesis? Why or why not?
+-   Write out a specific hypothesis, fully specified with correct notation, as to whether the average odometer readings for cars sold in Springfield are higher than the population at an alpha of 0.10.
+-   Does this test pass the conditions for hypothesis testing?
+-   Find the $p$ value for whether the average odometer reading in Springfield is higher than the national average.
+-   What are some possible lurking variables that might make our conclusion unreliable?
+-   What can you conclude about cars sold in Springfield from these two tests? What factor(s) do you think lead to this result?
+
+## Q5: Hypothesis testing wisdom (25 points)
+
+Now we consider the average age of cars sold in Springfield. A recent study found that the average age of cars in the US is about 6.47 years.
+
+### Q5a Springfield cars average age
+
+-   Write out the hypothesis for whether the average age of cars in the dataset is different than the hypothesized average age.
+-   If we fail to reject the null hypothesis in this case, does that mean that the null hypothesis is true? Why?
+-   Explain what the difference between a Type I and a Type II error is here
+-   Which error type do you think would be more serious for a market analyst trying to understand the state of Springfield's used car market? Why?
+-   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
+-   What is the power of this test (no need for a formula, just answer conceptually)?
+-   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average age would you need to see to feel there is a *practically* significant difference?
+
+### Q5b Doing the work
+
+-   By hand (show work), calculate your hypothesis test and interpret the results.
+
+![Downtown Springfield[^4]](photos/downtownspringfield.jpeg){width="800"}
+
+[^4]: Photo courtesy of The Smithsonian
+
+## Q6 Two sample $t$ and $z$ test (25 points)
+
+Now let's compare the Springfield subgroup with the Boston subgroup. Assume both subgroups are samples.
+
+### Q6a Proportion of domestic vs. foreign cars
+
+-   Write appropriate hypotheses that the difference in the proportion domestic cars sold in Springfield vs. Boston is not zero.
+-   Are the assumptions and conditions necessary for inference satisfied?
+-   Test the hypothesis and state your conclusion.
+-   Explain in this context what your $p$ value means.
+-   What type of error might your hypothesis conclusion be making? How could you correct for it?
+-   Create a 95% confidence interval for the difference.
+-   Interpret your interval from a statistical perspective and explain its practical meaning.
+-   What factor(s) do you think lead to this result?
+
+### Q6b Price of cars for sale in Springfield vs. Boston
+
+-   Write out the hypothesis for whether there is a difference in the price of Springfield vs. Boston used cars.
+-   Are the assumptions and conditions necessary for inference satisfied? Explain.
+-   In this case, should you be using pooled variance?
+-   Create a 95% confidence interval for the difference.
+-   Interpret your interval in this context.
+-   What are some reasons that the conclusions you draw from this test might not be valid?
+
+## Q7: Putting it all together (15 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (an additional graph, table, or calculation)**, write at least two to three paragraphs outlining what you think are the main findings from Q1-Q6 and your own additional analysis. Based on these results, what would you recommend to a used car dealership based in Springfield? What information are we missing in this dataset that we would need to better understand the Springfield market for used cars?

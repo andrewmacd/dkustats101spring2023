@@ -1,0 +1,57 @@
+---
+title: "Lab 3.1 - Bootstrapping"
+author: "Student"
+date: "4/19/2023"
+output:
+  html_document:
+    toc: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Load your dataset and place your libraries here
+```
+
+![](washdcbike.jpg){width="800"}
+
+# Creating a bootstrap simulation
+
+For this assignment, we will be using data from the Washington D.C. bicycle sharing system. In particular, we want to try and create accurate confidence intervals for various features of the dataset. 
+
+>You can find the variable definitions [here](https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset).
+
+## Expectations
+
+1.  Before starting, write a sentence or two on your expectation of the confidence interval for the three variables `cnt`, `temp`, and `windspeed`  
+
+## Setup
+
+2.  Install the library `infer` (documentation [here](https://infer.tidymodels.org/reference/rep_sample_n.html#examples)) and load it
+
+3.  Review the basic code process here: [here](https://moderndive.com/8-confidence-intervals.html#resampling-simulation)
+
+## Create a sample
+
+4. Make a subset of the data that is a random sample of size 50 using the `sample(<variable>, 50, replace=TRUE)` command for each variable
+
+## Classical confidence intervals
+
+5. Check the conditions and create the 95% confidence intervals by hand for the three variables of interest
+
+6. Compare these results to the true dataset values - do you think your confidence interval was helpful? Why or why not?
+
+## Bootstrapping
+
+7. Using the `rep_sample_n(size = 50, replace = TRUE, reps=100000)` function, sampling with replacement for each of the three variables of interest. Make sure to follow the code example on the [moderndive webpage](https://moderndive.com/8-confidence-intervals.html#bootstrap-1000-replicates) to generate your sampling distribution of means.
+
+> Remember that when bootstrapping, you should make sure that the `size` argument is set to be the size of your sample - you want to use all of the information possible from your sample!
+
+8. Create a confidence interval using the `quantile()` function on this sampling distribution. How do these compare to your confidence intervals calculated in the classical way?
+
+9. Create a confidence interval using the $SE$ of your bootstrapped sampling distribution and multiplying it by $t^*$. Compare it to the one you generated using the `quantile()` function. What additional information are we assuming in this case?
+
+If you have extra time, you can try to use the alternative workflow described [here](https://moderndive.com/8-confidence-intervals.html#infer-workflow).
+
+If you still have extra time, you can try to bootstrap regression lines via the method described [here](https://www.tidymodels.org/learn/statistics/bootstrap/)
