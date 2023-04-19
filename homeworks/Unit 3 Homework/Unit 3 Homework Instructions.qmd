@@ -5,6 +5,9 @@ date: "4/16/2023"
 output:
   html_document:
     toc: true
+format:
+  html:
+    embed-resources: true
 subtitle: DKU Stats 101 Spring 2023
 ---
 
@@ -13,6 +16,13 @@ subtitle: DKU Stats 101 Spring 2023
 #| include: false
 
 # put any setup code here
+
+# Note that .Rds (Rdata) file formats, you only need to use the
+# load command like as follows:
+# load(<filename>)
+# You *don't* need to save the file load command to a name like
+# with .csv like
+# vehicles <- read.csv(<filename>)
 ```
 
 ![Springfield's famous Mattoon Street[^1]](photos/mattoon-street.jpg){width="800"}
@@ -21,7 +31,7 @@ subtitle: DKU Stats 101 Spring 2023
 
 # Assignment Background
 
-You are a Springfield, Massachusetts area used car salesperson (denoted in the dataset by the region `western massachusetts`) and have been tasked by your boss to write a report on the state of the local used care market. You will also be tasked to consider whether the used car market is in any way unique compared to the rest of the country and compared to the nearby city of Boston. To help analyze this question, your boss provides you with a database of all cars listed on a popular used car website, Craigslist, during the year 2021. You can consider this total database to provide accurate population estimates.
+You are a Springfield, Massachusetts area used car salesperson (denoted in the dataset by the region `western massachusetts`) and have been tasked by your boss to write a report on the state of the local used care market. You will also be tasked to consider whether the used car market is in any way unique compared to the rest of the country and compared to the nearby city of Boston. To help analyze this question, your boss provides you with a database of cars listed on a popular used car website, Craigslist, during the year 2021. You can consider this total database to provide accurate population estimates.
 
 Note that many of the columns require some recoding, either to remove junk values, properly code missing values, or to collapse the values in a column into a simple two category definition. I have already converted the column manufacturer into `origin`, recoding `manufacturer` based on whether the car was sold by an American company or a foreign company.
 
@@ -111,7 +121,7 @@ Now let's turn to comparing Springfield to some hypotheses. Again treat your Spr
 
 ### Q4a Proportion of regular cars
 
-According to a [recent study](), the percentage of cars sold nationally that are standard cars (not SUVs, pickups, vans, or minivans) has been declining for some time and now stands at x%
+According to a recent [study](https://www.nytimes.com/2020/05/21/business/suv-sales-best-sellers.html), the percentage of cars sold nationally that are standard cars (not SUVs, pickups, vans, or minivans) has been declining for some time and now stands at about 22.1%
 
 -   Write a specific hypothesis, fully specified, as to whether the proportion of regular cars sold in Springfield are different than the national average.
 -   What do you think is a reasonable critical value to select in this case? Choose your own critical value for your hypotheses tests.
@@ -122,7 +132,7 @@ According to a [recent study](), the percentage of cars sold nationally that are
 
 ### Q4b Average odometer reading
 
-According to another recent study, the average odometer reading in the US is about xx,xxx.
+According to another recent [study](https://www.ratchetandwrench.com/topics/reporters-blog/article/11464998/odometers-reached-record-levels-in-2020), the average odometer reading in the US is about 123,000.
 
 -   If we observe that the average odometer reading of cars sold in Springfield is higher than the national average at $p$=0.06, should we reject the null hypothesis? Why or why not?
 -   Write out a specific hypothesis, fully specified with correct notation, as to whether the average odometer readings for cars sold in Springfield are higher than the population at an alpha of 0.10.
@@ -133,7 +143,7 @@ According to another recent study, the average odometer reading in the US is abo
 
 ## Q5: Hypothesis testing wisdom (25 points)
 
-Now we consider the average age of cars sold in Springfield. A recent study found that the average age of cars in the US is about 6.47 years.
+Now we consider the average age of cars sold in Springfield. A recent [study](https://www.statista.com/statistics/738667/us-vehicles-projected-age/) found that the average age of cars in the US is about 12.2 years.
 
 ### Q5a Springfield cars average age
 

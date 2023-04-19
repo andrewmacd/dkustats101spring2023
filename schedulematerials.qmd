@@ -260,7 +260,7 @@ Topics covered:
 
 ## Unit 3 homework - progress check (due Wednesday, April 26 at 23:59:00)
 
--   Homework files:
+-   Homework files: [Unit 3 homework instructions](homeworks/Unit 3 Homework/unit.3.homework.zip)
 
 # Unit 4: Statistical inference
 
@@ -284,7 +284,7 @@ Topics covered:
 
 ## Unit 3 homework (due Sunday, May 7 at 23:59:00)
 
--   Homework files:
+-   Homework files: [Unit 3 homework instructions](homeworks/Unit 3 Homework/unit.3.homework.zip)
 
 ## Lecture 4.2: Returning to regression (Tuesday, May 9)
 
