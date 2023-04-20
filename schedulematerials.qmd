@@ -248,7 +248,9 @@ Topics covered:
 
 -   $p$ values and decisions -- how to make a decision
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 3.3](https://andrewm.shinyapps.io/spr2023hyptesting/)
+
+-   Lecture activity: [Lecture 3.3 activity](activities/Lecture 3.3/lecture3.3.activity.zip)
 
 ## Lecture 3.4: Hypothesis testing wisdom (Tuesday, April 25)
 
