@@ -254,7 +254,25 @@ Topics covered:
 
 ## Lecture 3.4: Hypothesis testing wisdom (Tuesday, April 25)
 
--   Lecture webpage:
+Reading to do before class: Chapter 16
+
+> Preclass quiz due at 2:30 pm China time
+
+Topics covered:
+
+- Interpreting p-values
+
+- Alpha and critical values
+
+- Practical vs. statistical significance
+
+- Type I and II errors
+
+- Power of a test
+
+-   Lecture webpage: [Lecture 3.4](https://andrewm.shinyapps.io/spr2023hyptestwisdom/)
+
+-   Lecture activity: [Lecture 3.4 activity](activities/Lecture 3.4/lecture3.4.activity.zip)
 
 ## Lab 3.2: Hypothesis testing (Wednesday, April 26)
 
