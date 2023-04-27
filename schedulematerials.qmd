@@ -300,7 +300,9 @@ Topics covered:
 
 -   Two-sample $t$ test
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 4.1](https://andrewm.shinyapps.io/spr2023comparinggroups/)
+
+-   Lecture activity: [Lecture 4.1 activity](activities/Lecture 4.1/lecture4.1.activity.zip)
 
 ## Unit 3 homework (due Sunday, May 7 at 23:59:00)
 

@@ -94,7 +94,7 @@ p.val.p <- round(p.val.p, digits=3)
 
 ### King county
 
-```{r kingcounty, echo=FALSE, out.width="100%", fig.cap="One sided test"}
+```{r kingcounty, echo=FALSE, out.width = "800px", fig.cap="One sided test"}
 knitr::include_graphics("www/king.county.jpg")
 ```
 
