@@ -322,11 +322,9 @@ Topics covered:
 
 -   Confidence and prediction intervals
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 4.2](https://andrewm.shinyapps.io/spr2023return2regression/)
 
-## Lab 4.1: Model building part 2 (Wednesday, May 10)
-
--   Lab files:
+-   Lecture activity: [Lecture 4.2 activity](activities/Lecture 4.2/lecture4.2.activity.zip)
 
 ## Lecture 4.3: Interpretation activity (Thursday, May 11)
 
@@ -346,4 +344,4 @@ Topics covered:
 
 ## Final project (due Thursday, May 18 at 23:59:00)
 
--   Homework files:
+-   Homework files:  [Final project instructions](homeworks/Final Project/final.project.zip)
