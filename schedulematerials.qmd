@@ -336,7 +336,9 @@ Topics covered:
 
 -   Determining possible weaknesses of the model
 
--   Lecture activity:
+-   Lecture paper discussion: [Paper](http://faculty.ucmerced.edu/lhamilton2/docs/Hamilton_2013_ASR.pdf)
+
+-   Lecture activity: [Lecture 4.3 activity](activities/Lecture 4.3/lecture4.3.activity.zip)
 
 ## Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)
 
