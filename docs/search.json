@@ -4,7 +4,7 @@
     "href": "homework.html",
     "title": "Homework",
     "section": "",
-    "text": "Unit 1 homework (due April 2nd at 23:59:00)\n\nUnit 1 homework instructions\nUnit 1 sample solutions\n\n\n\nUnit 2 homework - midterm project (due Sunday, April 16 at 23:59:00)\n\nUnit 2 homework instructions\n\n\n\nUnit 3 homework (due Sunday, May 7 at 23:59:00)\n\nUnit 3 homework instructions\n\n\n\nUnit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)\n\nPaper analysis instructions\n\n\n\nFinal project (due Thursday, May 18 at 23:59:00)\n\nFinal project instructions"
+    "text": "Unit 1 homework (due April 2nd at 23:59:00)\n\nUnit 1 homework instructions\nUnit 1 sample solutions\n\n\n\nUnit 2 homework - midterm project (due Sunday, April 16 at 23:59:00)\n\nUnit 2 homework instructions\n\n\n\nUnit 3 homework (due Sunday, May 7 at 23:59:00)\n\nUnit 3 homework instructions\n\n\n\nUnit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)\n\nUnit 4 homework - paper analysis\n\n\n\nFinal project (due Thursday, May 18 at 23:59:00)\n\nFinal project instructions"
   },
   {
     "objectID": "index.html",
@@ -459,7 +459,7 @@
     "href": "schedulematerials.html#lecture-4.2-returning-to-regression-tuesday-may-9",
     "title": "Course Schedule and Class Materials",
     "section": "Lecture 4.2: Returning to regression (Tuesday, May 9)",
-    "text": "Lecture 4.2: Returning to regression (Tuesday, May 9)\nReading to do before class: Chapter 20\n\nPreclass quiz due at 2:30 pm China time\n\nTopics covered:\n\nRegression inference and intuition\nThe regression table\nConfidence and prediction intervals\nLecture webpage:"
+    "text": "Lecture 4.2: Returning to regression (Tuesday, May 9)\nReading to do before class: Chapter 20\n\nPreclass quiz due at 2:30 pm China time\n\nTopics covered:\n\nRegression inference and intuition\nThe regression table\nConfidence and prediction intervals\nLecture webpage: Lecture 4.2\nLecture activity: Lecture 4.2 activity"
   },
   {
     "objectID": "schedulematerials.html#lab-4.1-model-building-part-2-wednesday-may-10",
@@ -473,7 +473,7 @@
     "href": "schedulematerials.html#lecture-4.3-interpretation-activity-thursday-may-11",
     "title": "Course Schedule and Class Materials",
     "section": "Lecture 4.3: Interpretation activity (Thursday, May 11)",
-    "text": "Lecture 4.3: Interpretation activity (Thursday, May 11)\n\nHow to read academic statistical results\nLocating the model\nInterpreting the test\nDetermining possible weaknesses of the model\nLecture activity:"
+    "text": "Lecture 4.3: Interpretation activity (Thursday, May 11)\n\nHow to read academic statistical results\nLocating the model\nInterpreting the test\nDetermining possible weaknesses of the model\nLecture paper discussion: Paper\nLecture activity: Lecture 4.3 activity"
   },
   {
     "objectID": "schedulematerials.html#unit-4-homework---paper-analysis-due-sunday-may-14-at-115900-pm",
@@ -606,14 +606,14 @@
     "href": "schedulematerials.html#unit-4-homework---paper-analysis-due-sunday-may-14-at-235900",
     "title": "Course Schedule and Class Materials",
     "section": "Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)",
-    "text": "Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)\n\nHomework files:"
+    "text": "Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)\n\nHomework files: Unit 4 homework - paper analysis instructions"
   },
   {
     "objectID": "schedulematerials.html#final-project-due-thursday-may-18-at-235900",
     "href": "schedulematerials.html#final-project-due-thursday-may-18-at-235900",
     "title": "Course Schedule and Class Materials",
     "section": "Final project (due Thursday, May 18 at 23:59:00)",
-    "text": "Final project (due Thursday, May 18 at 23:59:00)\n\nHomework files:"
+    "text": "Final project (due Thursday, May 18 at 23:59:00)\n\nHomework files: Final project instructions"
   },
   {
     "objectID": "schedulematerials.html#lab-3.1-bootstrapping-wednesday-april-19",

@@ -17,8 +17,8 @@ title: "Homework"
 
 # Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)
 
--   Paper analysis instructions
+-   [Unit 4 homework - paper analysis](homeworks/Unit 4 Homework - Paper Analysis/unit.4.homework.zip)
 
 # Final project (due Thursday, May 18 at 23:59:00)
 
--   Final project instructions
+-   [Final project instructions](homeworks/Final Project/final.project.zip)

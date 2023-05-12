@@ -322,11 +322,9 @@ Topics covered:
 
 -   Confidence and prediction intervals
 
--   Lecture webpage:
+-   Lecture webpage: [Lecture 4.2](https://andrewm.shinyapps.io/spr2023return2regression/)
 
-## Lab 4.1: Model building part 2 (Wednesday, May 10)
-
--   Lab files:
+-   Lecture activity: [Lecture 4.2 activity](activities/Lecture 4.2/lecture4.2.activity.zip)
 
 ## Lecture 4.3: Interpretation activity (Thursday, May 11)
 
@@ -338,12 +336,14 @@ Topics covered:
 
 -   Determining possible weaknesses of the model
 
--   Lecture activity:
+-   Lecture paper discussion: [Paper](http://faculty.ucmerced.edu/lhamilton2/docs/Hamilton_2013_ASR.pdf)
+
+-   Lecture activity: [Lecture 4.3 activity](activities/Lecture 4.3/lecture4.3.activity.zip)
 
 ## Unit 4 homework - paper analysis (due Sunday, May 14 at 23:59:00)
 
--   Homework files:
+-   Homework files: [Unit 4 homework - paper analysis instructions](homeworks/Unit 4 Homework - Paper Analysis/unit.4.homework.zip)
 
 ## Final project (due Thursday, May 18 at 23:59:00)
 
--   Homework files:
+-   Homework files:  [Final project instructions](homeworks/Final Project/final.project.zip)
