@@ -27,12 +27,13 @@ library(kableExtra)
 library(gridExtra)
 library(infer)
 
+set.seed(88888888)
+
 # load(<filename>)
 load("vehicles.Rds")
 
 # Sets the graphical theme
 theme_set(theme_classic()+theme(plot.title = element_text(hjust = 0.5)))
-
 ```
 
 The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data)
@@ -45,7 +46,7 @@ The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austin
 
 > Example: [The Most Important Features of a Used Car](https://www.hawkfordstcharles.com/most-important-features-of-used-car/); [Just What Factors Into The Value Of Your Used Car?](https://www.investopedia.com/articles/investing/090314/just-what-factors-value-your-used-car.asp)
 >
-> From the articles, we know that mileage, condition, accident history will affect the value of a used vehicle. Condition is more subjective than mileage --- someone selling a reliable, accident-free car with paint scratches and surface rust might describe it as excellent, whereas most buyers might call it good to average. Thus, I expect:
+> From the articles, we know that mileage, condition, accident history will all affect the value of a used vehicle. Condition is more subjective than mileage --- someone selling a reliable, accident-free car with paint scratches and surface rust might describe it as excellent, whereas most buyers might call it good to average. Thus, I expect:
 >
 > -   `odometer` has a strong, negative association with `price`.
 >
@@ -55,7 +56,7 @@ The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austin
 
 > **Points of emphasis:**
 >
-> -   Any reasonable articles work here.
+> -   Any reasonable articles work here. Need clear expectations about specific variables.
 
 ## Q2: Missing data (10 points)
 
@@ -63,7 +64,7 @@ The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austin
 
 -   Explore the key columns of `price`, `origin`, `odometer`, `year`, and `type`. Analyze what values you think should be missing and recode those as missing. Explain your logic. Then make a table that illustrates the amount of missing data in your dataset.
 
-> *Below* is an example analysis. As long as your analysis is reasonable/logical, that is fine
+> **Following** is an example analysis. As long as your analysis is reasonable/logical, that is fine.
 > Here we need to explore the missingness of three numerical variables `price`, `odometer` and `year`, and two categorical variables `origin` and `type`. Fisrt I took an overview of the variables, and find:
 >
 > -   `price` with 0 should be recoded as NA.
@@ -71,30 +72,26 @@ The dataset is courtesy of [Austin Reese](https://www.kaggle.com/datasets/austin
 > -   `odometer` with 0 should not be recoded because 0 is reasonable for a car with very little mileage.
 
 ```{r}
-
- #| label: q2a1
- #| echo = FALSE
+#| label: q2a1
+#| echo: FALSE
  
+kable(summary(vehicles.pop[, c("price", "odometer", "year")]),
+      col.names = c("Price", "Odometer", "Year")) %>% 
+  kable_styling(full_width=F)
 
+kable(table(vehicles.pop$origin),col.names = c("Origin", "Frequency"))%>% 
+  kable_styling(full_width=F)
 
-kable(summary(vehicles.pop[, c("price", "odometer", "year")])) %>% kable_styling(full_width=F)
- 
-kable(table(vehicles.pop$origin),col.names = c("origin", "frequency"))%>% kable_styling(full_width=F)
-
-kable(table(vehicles.pop$type),col.names = c("type", "frequency"))%>% kable_styling(full_width=F)
-
-
+kable(table(vehicles.pop$type),col.names = c("Type", "Frequency"))%>% 
+  kable_styling(full_width=F)
 ```
 
 ```{r}
 #| label: q2a2
 
-vehicles.tidy <- 
-  
-  vehicles.pop %>%
-  replace_with_na_at( .vars = c("price","origin","odometer","year","type"),   ~.x %in% c(" "))  %>%
-replace_with_na_at( .vars = c("price"),   ~.x %in% c("0"))
-
+vehicles.tidy <- vehicles.pop %>%
+  replace_with_na_at( .vars = c("price","origin","odometer","year","type"),   ~.x %in% c(" ")) %>% 
+  replace_with_na_at( .vars = c("price"),   ~.x %in% c("0"))
 ```
 
 > The amount of missing data is shown below.
@@ -102,45 +99,45 @@ replace_with_na_at( .vars = c("price"),   ~.x %in% c("0"))
 ```{r}
 #| label: q2a3
 
-kable(colSums(is.na(vehicles.tidy[, c("price", "odometer", "year", "type", "origin")])),col.names=c("NA count")) %>% kable_styling(full_width=F)
-
-
-
+kable(colSums(is.na(vehicles.tidy[, c("price", "odometer", "year", "type", "origin")])),
+      col.names=c("NA count")) %>% 
+  kable_styling(full_width=F)
 ```
 
 ### Q2b. Thinking about missingness
 
-Do you think your data is MAR, MCAR, or NMAR? What leads you to think that? In what ways could the pattern of missingness in the dataset influence our confidence interval and hypothesis test estimates in the following sections?
+Do you think your data is MAR, MCAR, or MNAR? What leads you to think that? In what ways could the pattern of missingness in the dataset influence our confidence interval and hypothesis test estimates in the following sections?
 
-> Here I assume the data are **MAR**.
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
 >
-> -   First, I determined the data are not MCAR because after visualizing missingness, we can see the probability of being missing is not the same for all cases.
+>- `price`: Price could probably be considered missing at random (MAR). Price and odometer seem to have some relationship to missingness. It is likely that if the condition of the car is very bad, the poster may not list the price.
+>- `origin`: Origin could probably be considered MAR or MCAR. Missing origin may relate to the vehicle being not categorizable or the seller being lazy and not fully filling out all the information
+>- `odometer`: Like `price`, odometer reading should probably be considered MAR. Likely people who do not list their odometer readings are trying to conceal how used their car is or have a type of car that does not have an odometer (like some motorcycles).
+>- `year`: Year has a very small amount of missingness. I would consider this to probably be MAR since these cases may be related to certain vehicle types that are not sold by the model year
+>- `type`: Type does not have any missing values
 >
-> -   Second, this data are most possible to be MAR. Because I can tell from the graph that when `origin` is missing, `price` is less likely to be missing.
->
-> -   Third, I ackowledge it is likely the data are NMAR, for example, to value a used car, the dealer needs abundant experience to make managerial judgements. Missing `price` could be due to junior evaluators' refusal to answer.
->
-> MAR influence on our confidence interval and hypothesis test estimates: To make the MAR condition more plausible in the statistical inferential process, we should **include** the variables that could explain missingness, which in my analysis is `origin`.
+> MAR influence on our confidence interval and hypothesis test estimates: To make the MAR condition more plausible in the statistical inferential process, we should **include** the variables that could explain missingness, which in my analysis is `condition` and `type`. Data that is MNAR would bias our results but that bias would not be visible to us.
 
 ```{r}
 #| label: q2b
-#| fig-cap: "Visulization of missingness"
+#| fig-cap: "Visulization of missingness of 10,000 random cases"
 #| fig-cap-location: top
 
-vehicles.tidy %>% sample_frac(0.1) %>% vis_miss(cluster = TRUE)
-  
+vehicles.tidy %>% 
+  slice_sample(n=10000) %>% 
+  vis_miss(cluster = TRUE, warn_large_data = FALSE)
 ```
 
 > **Points of emphasis:**
 >
 > -   Clearly interpret the influence of type on missingness on confidence interval and hypothesis test estimates.
-> -   There are many ways to explore MCAR, MAR, NMAR, efforts on analyzing and justifying your arguments will have full points.
+> -   There are many ways to explore MCAR, MAR, MNAR, efforts on analyzing and justifying your arguments will have full points.
 
 ## Q3: Confidence intervals (20 points)
 
 You, as a researcher, are interested in the general conditions for used cars in the Springfield, Massachusetts market. For questions Q3-Q5, consider your Springfield subset to be your sample.
 
-> *Note:* your examples may vary depending on how you defined missingness but the general form should be as described in the following answers
+> **Note:** your examples may vary depending on how you defined missingness but the general form should be as described in the following answers
 
 ### Q3a: Proportion of domestic cars
 
@@ -168,16 +165,13 @@ q <- round(q, digits=4)
 
 $$p\pm z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}=0.477\pm 1.96 \times 0.032=(0.414, 0.540)$$
 
-```         
-```
-
 -   Check the conditions of the confidence interval
 
 > Conditions: Independence, Randomization, 10% Condition, Success/Failure Condition
 >
 > -   **Independence**: yes, samples are independent.
-> -   **Randomization**: yes, I made an assumption here that our sample is representative.
-> -   **10% condition**: yes, each sample is less than 10% of the population.
+> -   **Randomization**: maybe, hard to say - depends on how representative Craigslist is.
+> -   **10% condition**: yes, the sample is less than 10% of the population,
 > -   **Success/failure**: yes, the expected number of successes and failure are both greater than 10.
 
 -   Interpret your confidence interval
@@ -192,12 +186,9 @@ $$p\pm z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}=0.477\pm 1.96 \times 0.032=(0.414
 >
 > -   $n=(\frac{1.96}{0.04})^2\times0.477\times(1-0.477)=598.9799$
 
-```         
-```
-
 -   In this case, what is the sampling frame?
 
-> *Note:* the following is an example answer. Other answers are OK as long as it is logical
+> *Following* is an example. As long as your answer is reasonable/logical, that is fine.
 
 > The sampling frame in this case is all used cars in Springfield, Massachusetts in 2021.
 
@@ -206,8 +197,13 @@ $$p\pm z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}=0.477\pm 1.96 \times 0.032=(0.414
 -   Make a histogram of the price of cars from your Springfield subset - what does this histogram indicate about the suitability of the data for making a confidence interval?
 
 ```{r}
-#|label: q3b1
-ggplot(vehicles.springfield, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue")+labs(title="Price distribution of used cars in Springfield",x="Price in USD", y="Frequency")
+#| label: q3b1
+ggplot(vehicles.springfield, aes(x=price)) + 
+  geom_histogram(fill="lightblue",color="darkblue")+
+  labs(title="Price distribution of used cars in Springfield",
+       x="Price in USD",
+       y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
 ```
 
 > The distribution of price is right skewed, with one outlier. However, since the sample size is over 100, according to the Central Limit Theorem, the shape of the distribution will not affect our calculation of the confidence interval.
@@ -217,11 +213,11 @@ ggplot(vehicles.springfield, aes(x=price)) + geom_histogram(fill="lightblue",col
 > The 90% CI is:
 >
 > $$
-> \bar{x}\pm t_{0.95, n-1} \frac{s}{\sqrt{n}}=24147.17\pm 1.65 \times \frac{22174.29}{\sqrt{224}}=(21700.02,26594.32)
+> \bar{x}\pm t_{0.95, df=238} \frac{s}{\sqrt{n}}=24147.17\pm 1.65 \times \frac{22174.29}{\sqrt{224}}=(21700.02,26594.32)
 > $$
 
 ```{r}
-#|label: q3b2
+#| label: q3b2
 
 xbar.price <- mean(vehicles.springfield$price, na.rm=T)
 sd.price <- sd(vehicles.springfield$price, na.rm=T)
@@ -230,12 +226,12 @@ n.price <- sum(!is.na(vehicles.springfield$price))
 
 -   Check the conditions of the confidence interval
 
-> -   **Randomization condition**: yes, prices are mutually independent.
-> -   **Nearly normal condition**: not really. However, due to n\>40, t -methods are safe because our histogram is not extremely skewed.
+> -   **Randomization condition**: maybe, hard to say - depends on how representative Craigslist is.
+> -   **Nearly normal condition**: not really. However, due to $n>40$, $t$ methods are safe because our histogram is not extremely skewed.
 
 -   Interpret your confidence interval
 
-> We are 95% confident that the true mean price is between 21700.02 and 26594.32.
+> We are 90% confident that the true mean price is between 21700.02 and 26594.32.
 
 -   How much larger would $n$ have to be to decrease by a factor of four the size of your confidence interval?
 
@@ -297,15 +293,15 @@ According to a recent [study](https://www.nytimes.com/2020/05/21/business/suv-sa
 
 -   Does this test pass the conditions for a hypothesis test?
 
-> -   **Randomization, Independence**: yes
+> -   **Randomization, Independence**: maybe, hard to say - depends on how representative Craigslist is.
 > -   **10% Condition**: yes
 > -   **Success/failure**: yes
 
 -   Find the $p$ value for the difference and interpret it with respect to your hypothesis test.
 
 ```{r}
-#|label: q4a1
-
+#| label: q4a1
+#| echo: TRUE
 
 df <- vehicles.springfield %>%
   filter(!is.na(type)) 
@@ -318,16 +314,20 @@ z <- (p-0.221)/sqrt(0.221*(1-0.221)/n)
 
 #calculate p-value
 p.value <- round((1-pnorm(z)),4)
+
+p.value
 ```
 
 > $p$ is very small, I rounded to 4 decimal places but r only output 0, meaning $p$ is like 0.0000....
 >
-> -   $p$ has **statistical significance**, it is smaller than alpha(0.05).
-> -   As to **practical significance**, This small $p$ provides strong evidence against H0. I am convinced of the difference of proportion of regular cars sold in Springfield compared to the population.
+> -   $p$ has **statistical significance**, it is smaller than $\alpha$ (0.05).
+> -   As to **practical significance**, a difference of nearly 50% is enough to say that this is a practically significant difference.
 
 -   What are some possible lurking variables that might make our conclusion unreliable?
 
-> The proportion of regular cars sold may vary depending on economic factors such as income, employment, and gas prices. A higher-priced gas may discourage people from buying large cars, for example.
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> Craigslist might not be the place where many expensive SUVs or newer model SUVs are sold, those may only be traded directly with the dealer and not listed on a site like this. 
 
 ### Q4b Average odometer reading
 
@@ -335,30 +335,25 @@ According to another recent [study](https://www.ratchetandwrench.com/topics/repo
 
 -   If we observe that the average odometer reading of cars sold in Springfield is higher than the national average at $p$=0.06, should we reject the null hypothesis? Why or why not?
 
-> It depends on the significant level. For example, we cannot reject the null hypothesis at a significance level of 0.05, but we can reject the null hypothesis at the 0.1 significance level.
+> It depends on the significance level. For example, we cannot reject the null hypothesis at a significance level of 0.05, but we can reject the null hypothesis at the 0.1 significance level. We need to know the $\alpha$ to make a conclusion.
 
 -   Write out a specific hypothesis, fully specified with correct notation, as to whether the average odometer readings for cars sold in Springfield are higher than the population at an alpha of 0.10.
 
 > $H_0:\mu = 123000$
 >
-> $H_a:\mu > 123000; alpha =0.10$
+> $H_a:\mu > 123000; \alpha=0.10$
 
 -   Does this test pass the conditions for hypothesis testing?
 
-> -   **Randomization and Independence**: yes
-> -   **10% condition**: yes
-> -   **Nearly normal**: not really but due to CLT, is ok
+> -   **Randomization and Independence**: maybe, hard to say - depends on how representative Craigslist is.
+> -   **10% condition**: yes.
+> -   **Nearly normal**: not really but due to CLT, is ok.
 
 -   Find the $p$ value for whether the average odometer reading in Springfield is higher than the national average.
 
-> The test statistic is:
->
-> $t=\frac{94238.23-123000}{\frac{95277.76}{\sqrt{240}}}=-4.677$
->
-> The p-value is **0.9999976 \> 0.1, failed to reject H0**. That means there is no sufficient evidence for us to say average odometer is higher than the population at an alpha of 0.10.
-
 ```{r}
-#|label: q4b
+#| label: q4b
+#| echo: TRUE
 
 odo.mean <- mean(vehicles.springfield$odometer,na.rm=T)
 odo.sd <- sd(vehicles.springfield$odometer,na.rm=T)
@@ -368,16 +363,26 @@ t = (odo.mean-123000)/
 
 p.value.odo = 1-pt(t, 239)
 
+round(p.value.odo, digits=4)
 ```
+
+> The test statistic is:
+>
+> $t=\frac{94238.23-123000}{\frac{95277.76}{\sqrt{240}}}=-4.677$
+> 
+> Note that since this is a upper-tail one-sided hypothesis test, $p$ needs to be $> 0.9$ 
+> The p-value is **$0.00000023 < 0.9$, fail to reject H0**. That means there is not sufficient evidence for us to say average odometer is higher than the population at an $\alpha$ of 0.10.
 
 -   What are some possible lurking variables that might make our conclusion unreliable?
 
-> -   **Type of vehicle**: The type of vehicle being sold in Springfield may be different from the national average, with certain types of vehicles having higher or lower odometer readings than others.
-> -   **Driving conditions**: The driving conditions in Springfield may be different from the rest of the country, which could affect the overall usage of cars and thus, the average odometer reading.
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> - **Type of vehicle**: The type of vehicle being sold in Springfield may be different from the national average, with certain types of vehicles having higher or lower odometer readings than others.
+> - **Driving conditions**: The driving conditions in Springfield may be different from the rest of the country, which could affect the overall usage of cars and thus, the average odometer reading.
 
 -   What can you conclude about cars sold in Springfield from these two tests? What factor(s) do you think lead to this result?
 
-> I am 95% confident to say that the proportion of regular cars sold in Springfield is different than the national average, but I have no evidence to say that the average odometer reading in Springfield is not higher than the national average at an alpha of 0.10. There are lots of factors which might lead to this result, for example, density of population and driving habits.
+> I am 95% confident to say that the proportion of regular cars sold in Springfield is different than the national average, but I have no evidence to say that the average odometer reading in Springfield is not higher than the national average at an $\alpha$ of 0.10. There are lots of factors which might lead to this result, for example, density of population and driving habits.
 
 > **Points of emphasis:**
 >
@@ -402,13 +407,14 @@ Now we consider the average age of cars sold in Springfield. A recent [study](ht
 
 -   Explain what the difference between a Type I and a Type II error is here
 
-> -   **A type I**: null is true but we mistakenly reject it. We conclude that the age is different from 12.2 when it is 12.2.
-> -   **A type II**: the alternative is true but we mistakenly fail to reject the null hypothesis. We conclude the age is 12.2 when actually the age is different from 12.2.
+> -   **A type I**: null is true but we mistakenly reject it. We conclude that the average age is different from 12.2 when it is 12.2.
+> -   **A type II**: the alternative is true but we mistakenly fail to reject the null hypothesis. We conclude the average age is 12.2 when actually the age is different from 12.2.
 
 -   Which error type do you think would be more serious for a market analyst trying to understand the state of Springfield's used car market? Why?
 
-> -   Answers may vary. It isn't obvious which is worse so any answer with a reasonable justification is ok.
-> -   **For example, a type II error would be more serious** than a Type I error. Because this could mean that the analyst fails to identify important trends or patterns in the market, leading to business decisions to remain the old strategy and not innovate, which may make them fall behind their competitors.
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> A type II error would be more serious than a Type I error. Because this could mean that the analyst fails to identify important trends or patterns in the market, leading to business decisions to use an old strategy and not innovate, which may lead to the business falling behind their competitors.
 
 -   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
 
@@ -424,8 +430,9 @@ Now we consider the average age of cars sold in Springfield. A recent [study](ht
 
 -   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average age would you need to see to feel there is a *practically* significant difference?
 
-> -   Answers may vary.
-> -   I think it depends on the objective of the data. For me, the size of difference should be 2 standard deviation away from the mean, just by convention.
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> An average age difference of two years seems like a reasonable threshold to start to take the difference seriouly. Such a difference would lead to different marketing and purchasing decisions while a one year difference may not.
 
 ## Q6 Two sample $t$ and $z$ test (25 points)
 
@@ -442,16 +449,16 @@ Now let's compare the Springfield subgroup with the Boston subgroup. Assume both
 -   Are the assumptions and conditions necessary for inference satisfied?
 
 > -   **Independence**: yes, seems so
-> -   **Randomization**: yes, seems so
-> -   **Independent Groups**: yes
+> -   **Randomization**: maybe, hard to say - depends on how representative Craigslist is.
+> -   **Independent Groups**: maybe, would need to investigate further to see if there are lurking variables
 > -   **Success/failure**: both p and q are over 10
 
 -   Test the hypothesis and state your conclusion.
 
-> The p-value is 0.008 \< 0.05, we can **reject the null hypothesis**.
-
 ```{r}
-#|label: q6a1
+#| label: q6a1
+#| echo: TRUE
+
 boston <- vehicles.tidy %>% filter(region=="boston")
 
 p1 <- mean(vehicles.springfield$origin=="domestic", na.rm=T)
@@ -463,13 +470,16 @@ est <- sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
 
 z.boston <- (p1-p2)/est
 
-p.boston <- (1-pnorm(z))*2
+p.boston <- (1-pnorm(z.boston))*2
 
+round(p.boston, 4)
 ```
+
+> The $p$ value is 0.0082 < 0.05, we can **reject the null hypothesis**.
 
 -   Explain in this context what your $p$ value means.
 
-> we have calculated a p value of 0.008. This means that **assuming the null hypothesis were true**, we would expect to see 0.8% of samples have a difference this large or larger between the two groups just by chance.
+> we have calculated a $p$ value of 0.0082. This means that **assuming the null hypothesis were true**, we would expect to see 0.82% of samples have a difference this large or larger between the two groups just by chance.
 
 -   What type of error might your hypothesis conclusion be making? How could you correct for it?
 
@@ -477,20 +487,24 @@ p.boston <- (1-pnorm(z))*2
 
 -   Create a 95% confidence interval for the difference.
 
-> The 95% confidence interval is (0.030, 0.200).
-
 ```{r}
-#|label: q6a2
+#| label: q6a2
+#| echo: TRUE
 
 CI.boston <- p1-p2 +c(-1,1)*qnorm(0.975)*est
 
+CI.boston
 ```
+
+> The 95% confidence interval is (0.030, 0.200).
 
 -   Interpret your interval from a statistical perspective and explain its practical meaning.
 
 > It means that we can be 95% confident that the true difference in the proportion of domestic cars sold in Springfield and Boston lies between 0.030 and 0.200.
 
 -   What factor(s) do you think lead to this result?
+
+> The following is a reasonable sample answer. Other answers are acceptable.
 
 > -   **Demographics**: Springfield and Boston may have different demographic compositions that affect consumer preferences for domestic versus foreign cars. For example, Springfield may have a higher proportion of residents who value buying American-made products.
 > -   **Marketing**: Car manufacturers and dealerships may have different marketing and advertising strategies in each region that influence consumer buying decisions.
@@ -506,16 +520,21 @@ CI.boston <- p1-p2 +c(-1,1)*qnorm(0.975)*est
 -   Are the assumptions and conditions necessary for inference satisfied? Explain.
 
 > -   **Independence**: yes, seems so
-> -   **Randomization**: yes, seems so
-> -   **Independent groups**: yes
+> -   **Randomization**: maybe, hard to say - depends on how representative Craigslist is.
+> -   **Independent groups**: maybe, the mix of cars sold in Boston and Springfield might be different
 > -   **Nearly normal**: no, but CLT should hold here
 
 ```{r}
-#|label: q6b1
+#| label: q6b1
 
+ggplot(vehicles.springfield, aes(x=price)) +
+  geom_histogram(fill="lightblue",color="darkblue") +
+  labs(title="Distribution of price at Springfield", x="Price in USD", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
 
-ggplot(vehicles.springfield, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue")+labs(title="Distribution of price at Springfield", x="Price in USD", y="Frequency")
-ggplot(boston, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue")+labs(title="Distribution of price at Boston", x="Price in USD", y="Frequency")
+ggplot(boston, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue") + 
+  labs(title="Distribution of price at Boston", x="Price in USD", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
 ```
 
 -   In this case, should you be using pooled variance?
@@ -527,7 +546,9 @@ ggplot(boston, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue")
 > The 95% confidence interval is (4132.411, 10809.703).
 
 ```{r}
-#|label: q6b2
+#| label: q6b2
+#| echo: TRUE
+
 r.price.data <- vehicles.springfield %>%
 summarize(mean.price = mean(price, na.rm=TRUE),
         size = sum(!is.na(price)),
@@ -550,18 +571,22 @@ df <- ifelse(r.n > l.n, l.n, r.n)
 est.sigma <- sqrt((r.price.data$se.price^2 / r.n) +
                     (l.price.data$se.price^2 / l.n))
 
-se <- round(est.sigma, digits=3)
+se <- round(est.sigma, digits=4)
 
 price.diff <- r.p - l.p
 conf.int <- c(price.diff - qt(0.975, df=df)*est.sigma, 
               price.diff + qt(0.975, df=df)*est.sigma)
+
+conf.int
 ```
 
 -   Interpret your interval in this context.
 
-> We are 95% confident that the true difference in price of springfield and boston is between 4132.411 and 10809.703.
+> We are 95% confident that the true difference in price of cars in Springfield vs. Boston is between 4132.411 and 10809.703.
 
 -   What are some reasons that the conclusions you draw from this test might not be valid?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
 
 > -   **Sample bias**: We assumed that the sample is representative, but if not representative, or if there were factors that influenced the selection of the sample, then the results of the test may not be generalized to the entire population.
 > -   **Non-random sampling**: We assumed that the sampling is random, but we need further information.
