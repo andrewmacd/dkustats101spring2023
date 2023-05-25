@@ -28,7 +28,7 @@ modes <- function(x) {
 }
 
 classroster <- read.csv("www/classroster.csv", fileEncoding="UTF-8-BOM")
-ourdata <- read.csv("www/ourdata.csv")
+ourdata <- read.csv("www/ourdata.csv", fileEncoding="UTF-8-BOM")
 ```
 
 # Characteristics of distributions
